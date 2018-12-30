@@ -13,7 +13,7 @@ class Index extends Component {
   render() {
     return (
       <div>
-         <div>我是首页</div>
+         <div>我是首页hhhhh</div>
          <div>{this.props.commonState.getUserNameFromStore}</div>
          
       </div>

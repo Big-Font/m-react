@@ -1,0 +1,56 @@
+.decorationCase{
+    width:100%;
+    .decorationCase-head{
+        i{
+            width:0.14rem;
+            height: 0.5rem;
+            background: #ffcc03;
+            margin: 0.6rem 0 0 -0.45rem;
+        }
+        h4{
+            font:500 0.38rem/1.23rem "Microsoft Yahei"
+        }
+        a{
+            font:normal 0.28rem/1.23rem "Microsoft Yahei"
+        }
+    }
+    .decorationCase-ad{
+        // width: 100%;
+        border-radius: 5px;
+        padding-top: 3.95rem;
+        padding-bottom:0.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        background: url(~@/images/decoration/ad.png) no-repeat;
+        background-size:100%; 
+        font:bold 0.315rem/0.38rem "Microsoft Yahei"
+    }
+    .decorationCase-list{
+        li{
+            padding:0.6rem 0;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            .decorationCase-list-casePic{
+                width: 3.15rem;
+                height: 2.38rem;
+                background: url(~@/images/decoration/case.png) no-repeat;
+                background-size:100%; 
+            }
+            .decorationCase-list-title{
+                padding-top: 0.07rem;
+                height: 2.31rem;
+                font:bold 0.336rem/0.42rem "Microsoft Yahei";
+                width:3.22rem;
+                position: relative;
+            }
+            .scanNum{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                font:normal 0.21rem/0.42rem "Microsoft Yahei";
+                b{
+                    margin: 0 0.21rem;
+                }
+            }
+        }
+    }
+}

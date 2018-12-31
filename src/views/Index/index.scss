@@ -1,0 +1,68 @@
+.home{
+  // width: 100%;
+  padding:0 0.45rem 0.9rem;
+  background: #fff;
+  overflow: hidden;
+  overflow-y:auto;
+  position: relative;
+  .swiper-container{
+    margin:0.25rem 0 0.5rem 0;
+    .swiper-wrapper{
+      .swiper-slide{
+        height: 1.9rem;
+      }
+    }
+    .swiper-pagination{
+      text-align: right;
+      span{
+        background: #fff
+      }
+    }
+  }
+  .home-importADShow{
+    width: 100%;
+    border-radius: 5px;
+    height: 7.1rem;
+    background: url(~@/images/home/ad.png) no-repeat;
+    background-size:100%; 
+  }
+  .home-simbleTool{
+    padding-top: 0.3rem;
+    li{
+      width:25%;
+      // margin-right:0.6rem;
+      text-align: center;
+      span{
+        font:normal 0.26rem/0.66rem "Microsoft Yahei"
+      }
+      i{
+        display: block;
+        width:0.966rem;
+        height: 1.078rem;
+        margin: 0 auto;
+        background: url(~@/images/decoration/simbleToo1.png)  no-repeat;
+        background-size:100%; 
+      }
+      .tool1{
+        background: url(~@/images/decoration/simbleToo1.png)  no-repeat;
+        background-size:100%; 
+      }
+      .tool2{
+        background: url(~@/images/decoration/simbleToo2.png)  no-repeat;
+        background-size:100%; 
+      }
+      .tool3{
+        background: url(~@/images/decoration/simbleToo3.png)  no-repeat;
+        background-size:100%; 
+      }
+      .tool4{
+        background: url(~@/images/decoration/simbleToo4.png)  no-repeat;
+        background-size:100%; 
+      }
+    }
+    .noMarRight{
+      margin-right: 0;
+      float: right;
+    }
+  }
+}

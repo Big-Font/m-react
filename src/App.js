@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Provider } from 'mobx-react';
 import Routers from '@/router';
-import commonState from './store/common';
+import stores from './store';
 
 class App extends Component {
   render() {
     return (
-      <Provider commonState={commonState}>
+      <Provider {...stores}>
           <Routers />
       </Provider>
     );

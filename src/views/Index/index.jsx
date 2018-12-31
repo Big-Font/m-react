@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
 import { inject, observer } from 'mobx-react';
-
-
+import AdBanner from './adBanner';//banner
+import DecorationCase from '@/components/DecorationCase';//banner
+import SimbleTool from './simbleTool';//banner
+import './index.scss'
 @inject('commonState')
 @observer
 class Index extends Component {
@@ -12,10 +13,12 @@ class Index extends Component {
 
   render() {
     return (
-      <div>
-         <div>我是首页hhhhh</div>
-         <div>{this.props.commonState.getUserNameFromStore}</div>
-         
+      <div className="home">
+         <AdBanner />
+         <div className="home-importADShow"></div>
+         <SimbleTool />
+         <DecorationCase titleName="经典装修" data={[1,2,3,4,5,6,7]} />
+         <DecorationCase titleName="设计美学" data={[1,2,3,4,5]} />
       </div>
     );
   }

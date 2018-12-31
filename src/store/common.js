@@ -1,14 +1,22 @@
+/* ========================================================
+
+    李雪魁
+    2018/12/31
+    头部导航数据状态
+    
+   ====================================================== */
+
 import { observable, computed, action, autorun } from 'mobx';
 
 class CommonState {
-    @observable userName = 'jason';
+    @observable headerTitle = '首页';
     
-    @computed get getUserNameFromStore() {
-        return this.userName;
+    @computed get getHeaderTitleFromStore() {
+        return this.headerTitle;
     }
 
-    @action handleStoreUserName(name) {
-        this.userName = name;
+    @action handleStoreHeaderTitle(title) {
+        this.headerTitle = title;
     }
 }
 

@@ -20,7 +20,7 @@ export default class Routers extends Component {
                     <HeadNav />
                     <Switch>
                         <Route exact path="/" component={Index} />
-                        <Route exact path="/newsList" component={NewsList} />
+                        <Route exact path="/activityCenter" component={NewsList} />
                         <Route exact path="/mine" component={Mine} />
                         <Route component={Page404} />
                     </Switch>

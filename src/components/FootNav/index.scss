@@ -12,6 +12,7 @@
     align-items:center;
     justify-content: space-around;
     border-top: 1px solid #E2E2E2;
+    background: #fff;
     .index>div{
         width: 0.4rem;
         height: 0.39rem;
@@ -19,12 +20,12 @@
         background-size: 100% 100%;
         margin: 0.02rem 0.02;
     }
-    .news-list>div{
+    .acs-list>div{
         width: 0.38rem;
         height: 0.38rem;
         background: url('./img/news.png') 100% 100% no-repeat;
         background-size: 100% 100%;
-        margin: 0.03rem 0.03rem;
+        margin: 0.03rem auto;
     }
     .mine>div{
         width: 0.44rem;
@@ -37,7 +38,7 @@
             background: url('./img/indexActive.png') 100% 100% no-repeat;
             background-size: 100% 100%;
         }
-        .news-list-bg{
+        .acs-list-bg{
             background: url('./img/newsActive.png') 100% 100% no-repeat;
             background-size: 100% 100%;
         }

@@ -10,8 +10,14 @@ export default
         class: 'index',
         iconClass: 'index-bg'
     }, {
-        keyR: '/activityCenter',
-        title: '活动中心',
+        keyR: '/decorationCases',
+        title: '装修案例',
+        class: 'acs-list',
+        iconClass: 'acs-list-bg'
+    },
+    {
+        keyR: '/findDecorator',
+        title: '找师傅',
         class: 'acs-list',
         iconClass: 'acs-list-bg'
     }, {

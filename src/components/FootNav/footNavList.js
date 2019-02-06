@@ -47,7 +47,6 @@ import menus from "@/config/menu";
                         }else{
                             return false;
                         }
-                        
                     }}
                    >
                        <div className={iconClass}></div>

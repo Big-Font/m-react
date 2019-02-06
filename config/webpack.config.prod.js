@@ -154,8 +154,12 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
               compact: true,
+              plugins: [
+                // 引入样式为 css
+                // style为true 则默认引入less
+                ['import', { libraryName: 'antd', style: 'css' }],
+              ]
             },
           },
           // The notation here is somewhat confusing.

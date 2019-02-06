@@ -1,0 +1,29 @@
+/* #components-form-demo-normal-login .login-form {
+  max-width: 6rem;
+  padding: 0 0.45rem;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+#components-form-demo-normal-login .login-form-button {
+  width: 100%;
+} */
+.login{
+  padding-left: 0.45rem;
+  padding-right: 0.45rem;
+}
+.login-nav{
+  text-align: center;
+  font: 500 0.38rem/0.958rem "微软雅黑";
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+.login-form{
+ 
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+} 

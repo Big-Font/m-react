@@ -23,8 +23,24 @@
     width: 100%;
     border-radius: 5px;
     height: 7.1rem;
-    background: url(~@/images/home/ad.png) no-repeat;
-    background-size:100%; 
+    .home-importADShow-left{
+      width:calc(50% - 0.15rem);
+      height: 7.1rem;
+      background: url(~@/images/home/ad.png) no-repeat;
+      background-size:100% 100%;
+      margin-right: 0.15rem;
+    }
+    .home-importADShow-right{
+      width:calc(50% - 0.15rem);
+      height: 7.1rem;
+      p{
+        width: 100%;
+        height:3.46rem;
+        background: url(~@/images/home/ad.png) no-repeat;
+        background-size:100%;
+        margin-bottom: 0.15rem;
+      }
+    }
   }
   .home-simbleTool{
     padding-top: 0.3rem;

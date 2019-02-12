@@ -12,15 +12,16 @@ let baseImgPath;
 
 if (process.env.REACT_APP_SECRET_API === 'development') {
     // 开发环境  npm run build:dev
-    baseUrl = '';
+    baseUrl = 'http://127.0.0.1:5000/api';
+    // baseUrl = 'https://qingruiserver.wangshen.top/api';
     baseImgPath = '';
 } else if (process.env.REACT_APP_SECRET_API === 'test') {
     // 测试环境  npm run build:test
-    baseUrl = '';
+    baseUrl = 'https://qingruiserver.wangshen.top/api';
     baseImgPath = '';
 } else if (process.env.REACT_APP_SECRET_API === 'product') {
     // 生产环境  npm run build:prod
-    baseUrl = '';
+    baseUrl = 'https://qingruiserver.wangshen.top/api';
     baseImgPath = '';
 }
 

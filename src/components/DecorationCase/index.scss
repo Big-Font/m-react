@@ -1,11 +1,14 @@
 .decorationCase{
     width:100%;
+    position: relative;
     .decorationCase-head{
         i{
             width:0.14rem;
-            height: 0.5rem;
+            height: 0.3rem;
             background: #ffcc03;
-            margin: 0.6rem 0 0 -0.45rem;
+            position: absolute;
+            top:0.5rem;
+            left: -0.45rem;
         }
         h4{
             font:500 0.38rem/1.23rem "Microsoft Yahei"
@@ -19,15 +22,15 @@
         border-radius: 5px;
         padding-top: 3.95rem;
         padding-bottom:0.5rem;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        // padding-left: 0.5rem;
+        // padding-right: 0.5rem;
         background: url(~@/images/decoration/ad.png) no-repeat;
         background-size:100%; 
         font:bold 0.315rem/0.38rem "Microsoft Yahei"
     }
     .decorationCase-list{
         li{
-            padding:0.6rem 0;
+            padding:0.45rem 0;
             border-top: 1px solid rgba(0,0,0,0.06);
             .decorationCase-list-casePic{
                 width: 3.15rem;

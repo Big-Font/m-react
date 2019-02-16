@@ -57,7 +57,7 @@ class NormalLoginForm extends Component {
 
         return (
             <div className="login">
-                <h3 className="login-nav"></h3>
+                <h3 className="login-nav"> </h3>
                 <Form onSubmit={this.handleSubmit} className="login-form">
                     <Form.Item>
                         {getFieldDecorator('phone', {

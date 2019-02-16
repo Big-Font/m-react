@@ -8,14 +8,14 @@ class DecoratonsList extends Component {
     }
   }
   render() {
-    const {titleName,data} = this.props;
+    const {data} = this.props;
     return (
      <ul className="decorationCase-list">
          {
               data.map((item,i)=>{
                 return (
                   <li 
-                    key={i}
+                    key={i + item}
                     className="clearfix"
                   >
                         <div className="fl clearfix decorationCase-list-title"

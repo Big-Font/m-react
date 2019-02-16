@@ -23,6 +23,8 @@ import menus from "@/config/menu";
     })
   }
   render() {
+    const {commonState} = this.props;
+    let num = commonState._keyNum;
     return (
      <div className="foot-nav">
          {
@@ -41,8 +43,7 @@ import menus from "@/config/menu";
                         if (!match) {
                             return false
                         }
-                        let locationPathName = location.pathname;
-                        if(locationPathName === keyR){
+                        if(i === num){
                             return true;
                         }else{
                             return false;

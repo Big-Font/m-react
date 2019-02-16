@@ -10,15 +10,12 @@ import {inject,observer} from 'mobx-react';
         super();
         this.forBack = this.forBack.bind(this);
     }
-
     forBack() {
         // console.log(this.props)
         this.props.history.go(-1);
         //修改title 名字
-        let findRouterName = window.location.hash.split("#/");
-        this.props.commonState.handleStoreHeaderTitle(findRouterName)
+        // await this.props.commonState.selectKey();
     }
-
     render() {
         const {commonState} = this.props;
         let header = commonState.getHeaderTitleFromStore;

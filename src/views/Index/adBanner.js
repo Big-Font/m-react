@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import Swiper from 'swiper/dist/js/swiper.js';
 import 'swiper/dist/css/swiper.min.css';
-import {homeBannerPic} from '@/config/homeBanner';
+// import {homeBannerPic} from '@/config/homeBanner';
 import { getBanner } from '@/apis/modules';
 import './index.scss';
 
@@ -52,11 +52,12 @@ class AdBanner extends Component {
     }
   }
   render() {
+    const {homeBannerPic} =this.state;
     return (
         <div className='swiper-container'>
             <div className='swiper-wrapper'>
                 {
-                    this.state.homeBannerPic.map((item,index)=>{
+                    homeBannerPic.map((item,index)=>{
                         let pic = item.banner_url;
                         let title = item.banner_name;
                         return(

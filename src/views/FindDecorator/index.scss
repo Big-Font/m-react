@@ -1,0 +1,34 @@
+.findDecorator{
+    width:100%;
+    overflow: hidden;
+    // overflow-y: auto;
+    background: #f5f5f5;
+    position: relative;
+    padding-bottom: 0.9rem;
+    .findDecorator-form{
+        padding-left: 0.45rem;
+        padding-right: 0.45rem;
+        h4{
+            font: 500 0.38rem/0.958rem "微软雅黑";
+            margin-bottom: 0.1rem
+        }
+        p{
+            font: normal 0.3rem/0.658rem "微软雅黑";
+            margin-top: 0.15rem
+        }
+        .findDecorator-form-textarea{
+            height: 3rem;
+            white-space: pre;
+            white-space: pre-line;
+            word-wrap: break-word;
+            color: #000;
+        }
+        .findDecorator-form-btn{
+            background: #fccb0d;
+        }
+        .newMargin{
+            margin-bottom: 10px;
+        }
+    }
+    
+}

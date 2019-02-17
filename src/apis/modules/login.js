@@ -12,7 +12,7 @@ function login(data) {
 //登录图形验证码
 function getPicCode() {
     return request({
-      url: '/v1/catcha',
+      url: '/v1/captcha',
       method: 'get',
     })
   }

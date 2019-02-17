@@ -9,6 +9,9 @@ import './index.scss'
 class Index extends Component {
   constructor(props) {
     super();
+    this.state = {
+      
+    }
   }
   componentDidMount() {//根据路由修改底部导航选中状态及title内容
     this.props.commonState.selectKey();
@@ -25,8 +28,8 @@ class Index extends Component {
           </div>
         </div>
         <SimbleTool />
-        <DecorationCase titleName="经典装修" data={[1, 2, 3, 4, 5, 6, 7]} />
-        <DecorationCase titleName="设计美学" data={[1, 2, 3, 4, 5]} />
+        <DecorationCase titleName="经典装修" />
+        <DecorationCase titleName="设计美学" />
       </div>
     );
   }

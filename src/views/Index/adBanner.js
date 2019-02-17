@@ -62,7 +62,7 @@ class AdBanner extends Component {
                         let title = item.banner_name;
                         return(
                            <div className="swiper-slide" key={title + index}>
-                                <img src={pic} alt={title} />
+                                <img src={pic} alt={title} className="banner-pic" />
                            </div>
                         )
                     })

@@ -13,20 +13,27 @@ class DecoratonsList extends Component {
      <ul className="decorationCase-list">
          {
               data.map((item,i)=>{
+                let styleS = {
+                  backgroundImage:"url("+item.caselist_img+")",
+                  backgroundSize:"100% 100%",
+                  backgroundRepeat:"no-repeat"
+                }
+                let title = item.caselist_title;
+                let caselist_pageview = item.caselist_pageview;
                 return (
                   <li 
                     key={i + item}
                     className="clearfix"
                   >
                         <div className="fl clearfix decorationCase-list-title"
-                        > 犯得上反对范德萨范德萨范德萨
+                        > {title}
                             <div className="scanNum clearfix">
                                 <i className="fl">图标眼</i>
-                                <b  className="fl">1920</b>
+                                <b  className="fl">{caselist_pageview}</b>
                                 <span  className="fl">浏览</span>
                             </div>
                         </div>
-                        <div className="decorationCase-list-casePic fr"></div>
+                        <div className="decorationCase-list-casePic fr" style={styleS}></div>
                   </li>
                 )
             })

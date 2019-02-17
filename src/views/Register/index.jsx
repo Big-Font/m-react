@@ -5,6 +5,7 @@ import {
 } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
+import { register,getEmailCode } from '@/apis/modules/register';
 const { Option } = Select;
 @withRouter
 //引进全局状态管理
@@ -17,6 +18,8 @@ class NormalLoginForm extends Component {
         this.state = {
             confirmDirty: false,
         }
+        this.registerInit = this.registerInit.bind(this); 
+        this.getCodeInit = this.getCodeInit.bind(this);
     }
     goLogin = () => {
         this.props.history.push('/login');
@@ -43,6 +46,24 @@ class NormalLoginForm extends Component {
     }
     componentDidMount() {
         this.props.commonState.handleStoreHeaderTitle("注册")
+    }
+    async registerInit() {
+        let data = {
+            phone:13633203563,
+            password:"123456",
+            email:"834469228@qq.com",
+            code:"0DA5"
+        }
+        let res = await register(data);
+        console.log(res.data)
+    }
+    async getCodeInit() {
+        let data = {
+            phone:13633203563,
+            email:"834469228@qq.com",
+        }
+        let res = await getEmailCode(data);
+        console.log(res.data)
     }
     render() {
         const { getFieldDecorator } = this.props.form;
@@ -72,11 +93,11 @@ class NormalLoginForm extends Component {
                                 {getFieldDecorator('captcha', {
                                     rules: [{ required: true, message: '请输入验证码!' }],
                                 })(
-                                    <Input type="number" />
+                                    <Input type="number"  />
                                 )}
                             </Col>
                             <Col span={8}>
-                                <Button style={{ width: '100%' }}>获取验证码</Button>
+                                <Button style={{ width: '100%' }} onClick={this.getCodeInit}>获取验证码</Button>
                             </Col>
                         </Row>
                     </Form.Item>
@@ -110,9 +131,9 @@ class NormalLoginForm extends Component {
                         )}
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" className="login-form-button">
+                        <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.registerInit}>
                             立即注册
-            </Button>
+                        </Button>
                     </Form.Item>
                 </Form>
                 <div className="clearfix">

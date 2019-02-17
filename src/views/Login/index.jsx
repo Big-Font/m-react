@@ -5,6 +5,7 @@ import {
 } from 'antd';
 import { withRouter } from 'react-router-dom';
 import {inject,observer} from 'mobx-react';
+import {login,getPicCode } from '@/apis/modules/login';
 const { Option } = Select;
 @withRouter
 //引进全局状态管理
@@ -15,6 +16,7 @@ class NormalLoginForm extends Component {
     constructor(props) {
         super();
         this.goRegister = this.goRegister.bind(this);
+        this.loginInit = this.loginInit.bind(this);
     }
     handleSubmit = (e) => {
         e.preventDefault();
@@ -27,8 +29,22 @@ class NormalLoginForm extends Component {
     goRegister(){
         this.props.history.push('/register');
     }
-    componentDidMount(){
-       this.props.commonState.handleStoreHeaderTitle("登录")
+    async componentDidMount(){
+       this.props.commonState.handleStoreHeaderTitle("登录");
+       await this.getPicCode();
+    }
+    async loginInit() {
+        let data = {
+            phone:13633203563,
+            password:"123456",
+            capkey:"1111",
+        }
+        let res = await login(data);
+        console.log(res.data)
+    }
+    async getPicCode() {
+        let res = await getPicCode();
+        console.log(res.data)
     }
     render() {
         const { getFieldDecorator } = this.props.form;
@@ -67,7 +83,7 @@ class NormalLoginForm extends Component {
                             <Checkbox>记住密码</Checkbox>
                         )}
                         <a className="login-form-forgot" href="">忘记密码</a>
-                        <Button type="primary" htmlType="submit" className="login-form-button">
+                        <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.loginInit}>
                             登录
             </Button>
                     </Form.Item>

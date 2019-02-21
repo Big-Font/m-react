@@ -3,14 +3,16 @@ import { inject, observer } from 'mobx-react';
 import AdBanner from './adBanner';//banner
 import DecorationCase from '@/components/DecorationCase';
 import SimbleTool from './simbleTool';
+import IconFont from '@/components/Iconfont';
 import './index.scss'
+
 @inject('commonState')
 @observer
 class Index extends Component {
   constructor(props) {
     super();
     this.state = {
-      
+
     }
   }
   componentDidMount() {//根据路由修改底部导航选中状态及title内容
@@ -20,6 +22,7 @@ class Index extends Component {
     return (
       <div className="home">
         <AdBanner />
+        <IconFont type='icon-mendoor13' style={{fontSize: '1rem',color: 'red'}} />
         <div className="home-importADShow clearfix">
           <div className="fl home-importADShow-left"></div>
           <div className="fl home-importADShow-right">

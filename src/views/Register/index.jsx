@@ -18,7 +18,7 @@ class NormalLoginForm extends Component {
         this.state = {
             confirmDirty: false,
         }
-        this.registerInit = this.registerInit.bind(this); 
+        this.registerInit = this.registerInit.bind(this);
         this.getCodeInit = this.getCodeInit.bind(this);
     }
     goLogin = () => {
@@ -49,17 +49,17 @@ class NormalLoginForm extends Component {
     }
     async registerInit() {
         let data = {
-            phone:13633203563,
+            phone:13633203565,
             password:"123456",
             email:"834469228@qq.com",
-            code:"0DA5"
+            code:"94F1"
         }
         let res = await register(data);
         console.log(res.data)
     }
     async getCodeInit() {
         let data = {
-            phone:13633203563,
+            phone:13633203565,
             email:"834469228@qq.com",
         }
         let res = await getEmailCode(data);

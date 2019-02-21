@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import IconFont from '@/components/Iconfont';
 import './index.scss'
 //引进全局状态管理
 import {inject,observer} from 'mobx-react';
@@ -22,7 +23,8 @@ import {inject,observer} from 'mobx-react';
         return (
             <div className="header-view">
                 <div className="header clearfix">
-                    <i className="fl" onClick={this.forBack}></i>
+                    <IconFont type='icon-guifandaohanglanfanhui' onClick={this.forBack} className="fl back" />
+                    {/* <i className="fl" onClick={this.forBack}></i> */}
                     <h3 className="fl">{header}</h3>
                 </div>
                 <div className="stance"></div>

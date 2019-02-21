@@ -6,6 +6,8 @@ import {
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { login, getPicCode } from '@/apis/modules/login';
+import { baseUrl } from '@/config/env';
+
 const { Option } = Select;
 @withRouter
 //引进全局状态管理
@@ -16,10 +18,11 @@ class NormalLoginForm extends Component {
     constructor(props) {
         super();
         this.state = {
-            captcha: "",
+            captcha: `${new Date().getTime()}`,
         }
         this.goRegister = this.goRegister.bind(this);
         this.loginInit = this.loginInit.bind(this);
+        this.handleCaptcha = this.handleCaptcha.bind(this);
     }
     handleSubmit = (e) => {
         e.preventDefault();
@@ -31,6 +34,11 @@ class NormalLoginForm extends Component {
     }
     goRegister() {
         this.props.history.push('/register');
+    }
+    handleCaptcha() {
+      this.setState({
+        captcha: new Date().getTime()
+      })
     }
     async componentDidMount() {
         this.props.commonState.handleStoreHeaderTitle("登录");
@@ -85,7 +93,7 @@ class NormalLoginForm extends Component {
                                 )}
                             </Col>
                             <Col span={8}>
-                                <p dangerouslySetInnerHTML={{__html: captcha}} ></p>
+                                <img onClick={this.handleCaptcha} src={`${baseUrl}/v1/captcha?${captcha}`} alt="" />
                             </Col>
                         </Row>
                     </Form.Item>

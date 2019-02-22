@@ -1,3 +1,5 @@
+@import '@/styles/variable.scss';
+
 .cases-detail{
   .title{
     position: relative;
@@ -12,40 +14,66 @@
       bottom: 0.1rem;
       >div {
         display: flex;
+        justify-content: center;
+        font-size: 0.5rem;
+        line-height: 0.5rem;
+        background: #fff;
+        padding:0 0.2rem;
+        border-radius: 0.06rem;
+        i{
+          color: #676767;
+          font-size: 0.4rem;
+          margin-right: 0.1rem;
+          margin-top: 0.02rem;
+        }
         h2{
           font-size: 0.3rem;
-          color: #fff;
+          color: #676767;
         }
       }
     }
   }
   >h1 {
     font-size: 0.4rem;
-    color: #676767;
+    // color: #676767;
     text-align: center;
   }
 }
 .info{
   color: #2b2b2b;
   position: relative;
-  border: 1px solid #e1e1e1;
+  border: 1px solid $green;
   width: 90%;
   margin: 0.4rem auto;
   padding: 0.4rem 0.2rem 0.2rem;
+  display: flex;
+  justify-content: space-around;
   h3{
     position: absolute;
-    top: -0.2rem;
+    top: -0.16rem;
     left: 0.2rem;
     background: #fff;
     padding: 0 0.2rem;
+    font-size: 0.24rem;
+    color: $green;
   }
   >div{
     font-size: 0.24rem;
     display: flex;
-    h5{
-      font-size: 0.24rem;
-      color: #676767;
-      margin-right: 0.2rem;
+    flex-direction: column;
+    >div {
+      display: flex;
+      h5{
+        font-size: 0.24rem;
+        color: $green;
+        margin-right: 0.2rem;
+      }
+      i{
+        font-size: 0.3rem;
+        color: $green;
+        margin-right: 0.1rem;
+        margin-top: 0.02rem;
+      }
     }
   }
 }

@@ -4,6 +4,7 @@ import './index.scss'
 //引进全局状态管理
 import {inject,observer} from 'mobx-react';
 import menus from "@/config/menu";
+import IconFont from '@/components/Iconfont';
 //把需要的全局状态inject过来
 @inject('commonState')
 @observer class FootNavList extends Component {
@@ -34,10 +35,10 @@ import menus from "@/config/menu";
                 let iconClass = item.iconClass;
                 let keyR = item.keyR;
                 return (
-                   <NavLink 
-                    to={keyR}  
-                    className={classN} 
-                    key={titleName+i} 
+                   <NavLink
+                    to={keyR}
+                    className={classN}
+                    key={titleName+i}
                     onClick={this.getHeaderTitleFn(titleName)}
                     isActive={(match, location)=>{//选择函数
                         if (!match) {
@@ -50,8 +51,9 @@ import menus from "@/config/menu";
                         }
                     }}
                    >
-                       <div className={iconClass}></div>
-                       <p>{titleName}</p>
+                      <IconFont type={iconClass} style={{ fontSize: '0.4rem'}}/>
+                      {/* <div className={iconClass}></div> */}
+                      <p>{titleName}</p>
                    </NavLink>
                 )
             })

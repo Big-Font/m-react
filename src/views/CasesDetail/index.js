@@ -33,7 +33,7 @@ class CasesDetail extends Component {
           <img className="title-img" src={resInfo.img} alt=""/>
           <div className="detail-info">
             <div>
-              <IconFont type='icon-wode1' style={{color: '#fff', fontSize: '0.4rem', marginRight: '0.1rem'}}/>
+              <IconFont type='icon-wode1' />
               <h2>{resInfo.author}</h2>
             </div>
           </div>
@@ -44,19 +44,28 @@ class CasesDetail extends Component {
         <div className="info">
           <h3>基本信息</h3>
           <div>
-            <IconFont type='icon-housedecoration' style={fontStyle}/>
-            <h5>户型</h5>
-            <p>{resInfo.apartment}</p>
+            <div>
+              <IconFont type='icon-fl-huxing' />
+              <h5>户型</h5>
+              <p>{resInfo.apartment}</p>
+            </div>
+            <div>
+              <IconFont type='icon-fangwumianji' />
+              <h5>室内面积</h5>
+              <p>{resInfo.area}</p>
+            </div>
           </div>
           <div>
-            <IconFont type='icon-mendoor13' style={fontStyle}/>
-            <h5>装修风格</h5>
-            <p>{resInfo.style}</p>
-          </div>
-          <div>
-            <IconFont type='icon-mendoor13' style={fontStyle}/>
-            <h5>装修费用</h5>
-            <p>￥{resInfo.spend}</p>
+            <div>
+              <IconFont type='icon-fengge' />
+              <h5>装修风格</h5>
+              <p>{resInfo.style}</p>
+            </div>
+            <div>
+              <IconFont type='icon-feiyong' />
+              <h5>装修费用</h5>
+              <p>{resInfo.spend}</p>
+            </div>
           </div>
         </div>
         {/* 内容 */}

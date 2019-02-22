@@ -3,6 +3,7 @@ import { Route, HashRouter, Switch, } from 'react-router-dom';
 
 import Index from '@/views/Index';
 import DecoratorsList from '@/views/DecoratorsList';
+import CasesDetail from '@/views/CasesDetail';
 import Mine from '@/views/Mine';
 import Page404 from '@/views/Page404';
 import HeadNav from '@/components/HeadNav'
@@ -28,7 +29,11 @@ export default class Routers extends Component {
                     <HeadNav />
                     <Switch>
                         <Route exact path="/" component={Index} />
+                        {/* 装修案例 */}
                         <Route exact path="/decorationCases" component={DecoratorsList} />
+                        {/* 装修案例详情 */}
+                        <Route exact path="/casesDetail/:id" component={CasesDetail} />
+                        {/* 我的 */}
                         <Route exact path="/mine" component={Mine} />
                         <Route exact path="/findDecorator" component={FindDecorator} />
                         <Route exact path="/register" component={Register} />
@@ -36,7 +41,7 @@ export default class Routers extends Component {
                         <Route component={Page404} />
                     </Switch>
                     {
-                        (header === "登录" ||  header === "注册") ? "" : <FootNav /> 
+                        (header === "登录" ||  header === "注册") ? "" : <FootNav />
                     }
                 </div>
             </HashRouter>

@@ -3,7 +3,6 @@ import { inject, observer } from 'mobx-react';
 import AdBanner from './adBanner';//banner
 import DecorationCase from '@/components/DecorationCase';
 import SimbleTool from './simbleTool';
-import IconFont from '@/components/Iconfont';
 import './index.scss'
 
 @inject('commonState')
@@ -22,7 +21,6 @@ class Index extends Component {
     return (
       <div className="home">
         <AdBanner />
-        <IconFont type='icon-mendoor13' style={{fontSize: '1rem',color: 'red'}} />
         <div className="home-importADShow clearfix">
           <div className="fl home-importADShow-left"></div>
           <div className="fl home-importADShow-right">

@@ -1,0 +1,78 @@
+@import '@/styles/variable.scss';
+
+.spike-detail{
+  .good-img{
+    width: 100%;
+  }
+  .spilk-info{
+    width: 92%;
+    background: #f2f8ff;
+    border-radius: 0.04rem;
+    margin: 0.4rem auto 0.3rem;
+    padding-bottom: 0.2rem;
+    >h1{
+      font-size: 0.3rem;
+      line-height: 0.8rem;
+      color: #383838;
+      text-align: center;
+      font-weight: bolder;
+    }
+    .time{
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 0.2rem;
+      >div {
+        width: 48%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 0.16rem 0;
+        h2{
+          color: #888888;
+          font-size: 0.32rem;
+        }
+        p, b {
+          color: $blue;
+          font-weight: normal;
+        }
+        >div{
+          color: #9c9c9c;
+          i{
+            width: 0.4rem;
+            height: 0.2rem;
+            background: #ffe00f;
+            display: inline-block;
+            border-radius: 0.2rem;
+            margin: 0 0.2rem;
+          }
+        }
+        .price{
+          font-size: 0.46rem;
+          color: $blue;
+          font-weight: bolder;
+          line-height: 0.9rem;
+        }
+      }
+    }
+    .des-info{
+
+
+      nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 0.2rem;
+        background: #fff;
+        width: 96%;
+        margin: 0 auto;
+
+        h3{
+          color: #383838;
+          font-size: 0.24rem;
+          line-height: 0.6rem;
+        }
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { Route, HashRouter, Switch, } from 'react-router-dom';
 import Index from '@/views/Index';
 import DecoratorsList from '@/views/DecoratorsList';
 import CasesDetail from '@/views/CasesDetail';
+import SpikeDetail from '@/views/SpikeDetail';
 import Mine from '@/views/Mine';
 import Page404 from '@/views/Page404';
 import HeadNav from '@/components/HeadNav'
@@ -33,6 +34,8 @@ export default class Routers extends Component {
                         <Route exact path="/decorationCases" component={DecoratorsList} />
                         {/* 装修案例详情 */}
                         <Route exact path="/casesDetail/:id" component={CasesDetail} />
+                        {/* 秒杀活动详情 */}
+                        <Route exact path="/spikeDetail/:id" component={SpikeDetail} />
                         {/* 我的 */}
                         <Route exact path="/mine" component={Mine} />
                         <Route exact path="/findDecorator" component={FindDecorator} />

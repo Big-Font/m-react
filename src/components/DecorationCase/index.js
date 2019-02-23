@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import './index.scss';
 import DecoratonsList from './decorationCaseList';
 import { decoration } from '@/apis/modules/decoration';
+import IconFont from '@/components/Iconfont';
 class DecorationCase extends Component {
   constructor(props) {
     super();
@@ -41,11 +42,11 @@ class DecorationCase extends Component {
     return (
       <div className='decorationCase'>
         <div className="decorationCase-head clearfix">
-          <i className="fl"></i>
+          <i className="fl decorationCase-head-i"></i>
           <h4 className="fl">{titleName}</h4>
           <div className="fr clearfix">
-            <a href="javascript:;" className="fl">查看更多 ></a>
-            {/* <b>图标todo</b> */}
+            <a href="javascript:;" className="fl">查看更多</a>
+            <IconFont type={"icon-more"} style={{float:"left"}} />
           </div>
 
         </div>

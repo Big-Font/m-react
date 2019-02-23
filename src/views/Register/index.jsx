@@ -66,7 +66,7 @@ class NormalLoginForm extends Component {
                 let detail = regAndLoginErrorMes.passwordNav;
                 callback(detail);
             }
-        } else if (type === "captcha") {
+        } else if (type === "code") {
             let codeReg = RegExpArr.codeReg;
             codeReg.lastIndex = 0;
             if (value !== "" && value) {
@@ -81,7 +81,7 @@ class NormalLoginForm extends Component {
                 callback(detail);
             }
         }
-        
+
     }
     //再次输入密码验证
     handleConfirmBlur = (e) => {
@@ -148,11 +148,11 @@ class NormalLoginForm extends Component {
     }
     setFieldsFn (detail) {
         this.props.form.setFields({
-            captcha: {
+          code: {
                 value: "",
                 errors: detail,
             },
-        });     
+        });
     }
     render() {
         const { getFieldDecorator } = this.props.form;
@@ -195,15 +195,15 @@ class NormalLoginForm extends Component {
                     <Form.Item>
                         <Row gutter={8}>
                             <Col span={16}>
-                                {getFieldDecorator('captcha', {
-                                    rules: [{ required: true, validator: this.inputValidator("captcha") },],
+                                {getFieldDecorator('code', {
+                                    rules: [{ required: true, validator: this.inputValidator("code") },],
                                 })(
                                     <Input type="text" />
                                 )}
                             </Col>
                             <Col span={8}>
-                                <Button 
-                                    style={{ width: '100%' }} 
+                                <Button
+                                    style={{ width: '100%' }}
                                     onClick={this.getCodeInit}
                                     disabled = {getCodeNav !== "获取验证码"}
                                 >{getCodeNav}</Button>

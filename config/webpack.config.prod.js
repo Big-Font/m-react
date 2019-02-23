@@ -158,7 +158,7 @@ module.exports = {
               plugins: [
                 // 引入样式为 css
                 // style为true 则默认引入less
-                ['import', { libraryName: 'antd', style: 'css' }],
+                ['import', { libraryName: 'antd', style:true}],
               ]
             },
           },
@@ -220,6 +220,27 @@ module.exports = {
               )
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+          },
+          {
+            test: /\.less$/,
+            use: [
+              {
+                loader: require.resolve('style-loader'),
+              }, 
+              {
+                loader:  require.resolve('css-loader'),
+              },
+              {
+                loader:  require.resolve('less-loader'),
+                options: {
+                  modifyVars: {
+                    'primary-color': '#41c95b',
+                    'link-color': '#41c95b',
+                  },
+                  javascriptEnabled: true,
+                },
+              }
+            ],
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.

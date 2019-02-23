@@ -157,7 +157,7 @@ module.exports = {
               plugins: [
                 // 引入样式为 css
                 // style为true 则默认引入less
-                ['import', { libraryName: 'antd', style: 'css' }],
+                ['import', { libraryName: 'antd', style: true }],
               ]
             },
           },
@@ -196,6 +196,27 @@ module.exports = {
                   ],
                 },
               },
+            ],
+          },
+          {
+            test: /\.less$/,
+            use: [
+              {
+                loader: require.resolve('style-loader'),
+              }, 
+              {
+                loader:  require.resolve('css-loader'),
+              },
+              {
+                loader:  require.resolve('less-loader'),
+                options: {
+                  modifyVars: {
+                    'primary-color': '#41c95b',
+                    'link-color': '#41c95b',
+                  },
+                  javascriptEnabled: true,
+                },
+              }
             ],
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.

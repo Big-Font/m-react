@@ -13,8 +13,8 @@ const service = axios.create(baseConfig)
 // request interceptor
 service.interceptors.request.use(config => {
   // Do something before request is sent
-  if (sessionStorage.getItem('QR_TOKEN')) {
-    config.headers['Authorization'] = `Bearer ${sessionStorage.getItem('QR_TOKEN')}` // 让每个请求携带自定义token 请根据实际情况自行修改
+  if (localStorage.getItem('QR_TOKEN')) {
+    config.headers['Authorization'] = `Bearer ${localStorage.getItem('QR_TOKEN')}` // 让每个请求携带自定义token 请根据实际情况自行修改
   }
   return config
 }, error => {
@@ -30,15 +30,16 @@ service.interceptors.response.use(response => {
   }
   return response
 }, error => {
-  switch(error.response.status) {
-    case 401:
-      // 登录过期，清除token
-      sessionStorage.removeItem('QR_TOKEN');
-      // window.location.reload();
-      break;
+  if(error.response){
+    switch(error.response.status) {
+      case 401:
+        // 登录过期，清除token
+        localStorage.removeItem('QR_TOKEN');
+        // window.location.reload();
+        break;
+    }
   }
-  console.log('err' + error) // for debug
-  return Promise.reject(error)
+  return Promise.reject(error);
 })
 
 export default service

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.css'
 import {
-    Form, Icon, Input, Button, Select, Row, Col,
+    Form, Icon, Input, Button, Select, Row, Col,message
 } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
@@ -31,7 +31,8 @@ class NormalLoginForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            if (!err) {//注册
+            console.log(values)
+            if (!err && values) {//注册
                 this.registerInit(values);
             }
         });
@@ -109,15 +110,16 @@ class NormalLoginForm extends Component {
     }
     //注册ajax
     async registerInit(data) {
-        if(!data)return;
+        if(!data || (data&&!data.phone))return;
         // data.phone = Number(data.phone)
         let res = await register(data);
         if (res.data.code === 0) {//注册成功--跳转到首页
             this.props.history.push('/');
-            sessionStorage.QR_TOKEN = res.data.token;
+            localStorage.QR_TOKEN = res.data.token;
+            message.success("注册成功，直接登录");
         } else if (res.data.code < 0){//网络错误怎么显示
             let detail = res.data.msg;
-            this.setFieldsFn([new Error(detail)])
+            message.error(detail,5);
         }
     }
     //验证码ajax
@@ -132,16 +134,19 @@ class NormalLoginForm extends Component {
                 email: val.email,
             }
             let res = await getEmailCode(data);
-            if (res.data.code === 0) {//注册成功--跳转到首页
+            if (res.data.code === 0) {//获取成功--跳转到首页
                 this.setState({
-                    getCodeNav:"查看邮箱"
+                    getCodeNav:"请查看邮箱"
                 });
+                let detail = res.data.msg;
+                message.success(detail);
             } else if (res.data.code < 0) {//网络错误怎么显示
                 this.setState({
                     getCodeNav:"稍等获取"
                 });
                 let detail = res.data.msg;
                 this.setFieldsFn([new Error(detail)])
+                message.error(detail,5);
             }
         }
 

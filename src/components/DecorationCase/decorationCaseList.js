@@ -27,12 +27,6 @@ class DecoratonsList extends Component {
      <ul className="decorationCase-list">
          {
               data.map((item,i)=>{
-                let styleS = {
-                  backgroundImage:"url("+item.caselist_img+")",
-                  backgroundSize:"100% 100%",
-                  backgroundRepeat:"no-repeat",
-                  borderRadius: '0.2rem'
-                }
                 let title = item.caselist_title;
                 let caselist_pageview = item.caselist_pageview;
                 return (
@@ -41,8 +35,8 @@ class DecoratonsList extends Component {
                     className="clearfix"
                     onClick={()=>{this.goCaseDetail(item.caselist_id)}}
                   >
-                        <div className="fl clearfix decorationCase-list-title"
-                        > {title}
+                        <div className="fl clearfix decorationCase-list-title">
+                            <p>{title}</p>
                             <div className="scanNum clearfix">
                                 <i className="fl">{item.caselist_author}</i>
                                 <IconFont className="fl" type='icon-liulan' style={{ fontSize: '0.4rem', marginRight: '0.1rem', marginLeft: '0.1rem'}}/>
@@ -50,7 +44,7 @@ class DecoratonsList extends Component {
                                 <span  className="fl">浏览</span>
                             </div>
                         </div>
-                        <div className="decorationCase-list-casePic fr" style={styleS}></div>
+                        <img className="decorationCase-list-casePic fr" src={item.caselist_img} alt="" />
                   </li>
                 )
             })

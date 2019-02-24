@@ -33,11 +33,8 @@ class DecorationCase extends Component {
   render() {
     const { titleName } = this.props;
     const { decorationList } = this.state;
-    let styleS = decorationList.length > 0 ? {
-      backgroundImage: "url(" + decorationList[0].caselist_img + ")",
-      backgroundSize: "100% 100%",
-      backgroundRepeat:"no-repeat"
-    } : {};
+    let imSrc = decorationList.length > 0 ? 
+      decorationList[0].caselist_img : "";
     let title = decorationList.length > 0 ? decorationList[0].caselist_title : "";
     return (
       <div className='decorationCase'>
@@ -50,7 +47,8 @@ class DecorationCase extends Component {
           </div>
 
         </div>
-        <div className="decorationCase-ad" style={styleS}>
+        <div className="decorationCase-ad">
+          <img src={imSrc} alt="" />
           {title}
         </div>
         <DecoratonsList data={decorationList} />

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './index.scss'
 import { withRouter } from 'react-router-dom';
-import {inject,observer} from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import minePic from '@/images/mine/headPic.png'
-import { personInfo, changePersonSomeInfo } from '@/apis/modules/mine';
+import { personInfo, changePersonSomeInfo,uploadAjax } from '@/apis/modules/mine';
+import IconFont from '@/components/Iconfont';
+import { Upload, Icon, message } from 'antd';
+import { baseUrl } from '@/config/env';
 //把需要的全局状态inject过来
 @withRouter
 @inject('commonState')
@@ -12,67 +15,129 @@ class Mine extends Component {
   constructor(props) {
     super();
     this.state = {
-      personInfo:{
+      personInfo: {
         address: null,
         age: null,
-        email: "834469228@qq.com",
+        email: null,
         img: null,
         name: null,
-        phone: "13633203563",
+        phone: null,
         sex: null,
         username: null,
-      }
+      },
+      loading: false,
+      imageUrl: null
     }
     this.goLogin = this.goLogin.bind(this);
     this.personInfoInit = this.personInfoInit.bind(this);
+    this.customRequest = this.customRequest.bind(this);
   }
   async componentDidMount() {//根据路由修改底部导航选中状态及title内容
     this.props.commonState.selectKey();
-    if (sessionStorage.getItem('QR_TOKEN')) {
+    if (localStorage.getItem('QR_TOKEN')) {
       //请求个人信息
       await this.personInfoInit();
     }
   }
   async personInfoInit() {
     let res = await personInfo();
-    console.log(res.data);
     if (res.data.code === 0) {//成功
-       this.setState({
-        personInfo:res.data.data[0],
-       })
-    } else if (res.data.code < 0){//网络错误怎么显示
-        
+      this.setState({
+        personInfo: res.data.data[0],
+      })
+    } else if (res.data.code < 0) {//网络错误怎么显示
+
     }
-}
+  }
   goLogin() {
     this.props.history.push('/login');
   }
-  render() {
-    const {personInfo} = this.state;
-    let name = personInfo.name ? personInfo.name  : "(无)";
-    let email = personInfo.email ? personInfo.email  : "(无)";
-    let phone = personInfo.phone ? personInfo.phone  : "(无)";
-    let personPic = personInfo.img ? personInfo.img  : minePic;
-    let username = personInfo.username ? personInfo.username  : "(无)";
-    let address = personInfo.address ? personInfo.address  : "(无)";
-    let stylePer = {
-      background:"url("+personPic+") no-repeat center",
-      backgroundSize:"1.06rem 1.06rem"
+  //上传图片限制
+  beforeUpload = (file) => {
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('图片不能超过2MB!');
     }
+    return isLt2M;
+  }
+  //前端显示图片 转base64
+  getBase64 = (img, callback) => {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result));
+    reader.readAsDataURL(img);
+  }
+  //图片上传时变化函数
+  handleChange = (info) => {
+    let self = this;
+    if (!localStorage.getItem('QR_TOKEN')){
+      message.warn("用户未登录,不能修改头像",5);
+      this.setState({ loading: false,imageUrl:null });
+      return;
+    };
+    if (info.file.status === 'uploading') {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === 'done') {
+      // Get this url from response in real world.
+      this.getBase64(info.file.originFileObj, imageUrl => this.setState({
+        imageUrl,
+        loading: false,
+      }));
+    }
+  }
+  //自定义交互 不使用 antd 的action
+  async customRequest () {
+    if (!localStorage.getItem('QR_TOKEN')){
+      return;
+    };
+    await this.uploadAjaxInit();
+  }
+  //上传图片
+  async uploadAjaxInit () {
+    let res = await uploadAjax();
+    console.log(res)
+  }
+  render() {
+    const { personInfo, imageUrl } = this.state;
+    let email = personInfo.email ? personInfo.email : "(无)";
+    let phone = personInfo.phone ? personInfo.phone : "(无)";
+    let personPic = personInfo.img ? personInfo.img : minePic;
+    let username = personInfo.username ? personInfo.username : phone;
+    let niName = personInfo.username ? personInfo.username : "(无)";
+    let address = personInfo.address ? personInfo.address : "(无)";
     return (
       <div className="mineS">
         <div className="mineS-top">
-          <p style={stylePer}></p>
+          <Upload
+            // name="fileName"
+            listType="picture-card"
+            className="avatar-uploader"
+            accept=".jpg,.jpeg,.bmp,.png,.pdf" 
+            showUploadList={false}
+            headers = {{
+              "Authorization":"Bearer " + localStorage.QR_TOKEN,
+              // 'Content-Type': 'multipart/form-data'
+            }}
+            action={`${baseUrl}/upload`}//上传图片地址
+            // customRequest={this.customRequest}
+            beforeUpload={this.beforeUpload}
+            onChange={this.handleChange}
+          >
+            {imageUrl ? <img src={imageUrl} alt="avatar" /> : <div>
+              <Icon type={this.state.loading ? 'loading' : 'plus'} style={{fontSize:"0.4rem"}} />
+            </div>}
+          </Upload>
           {
-            !sessionStorage.getItem('QR_TOKEN') ? 
-            <input type="button" value="点击登录" onClick={this.goLogin} /> : 
-            <b>{name}</b>
+            !localStorage.getItem('QR_TOKEN') ?
+              <input type="button" value="点击登录" onClick={this.goLogin} /> :
+              <b>{username}</b>
           }
         </div>
         <div className="mineS-mid">
           <div className="mineS-mid-myActiv clearfix">
             <h4 className="fl">我的活动</h4>
-            <a href="javascript:;" className="fr"> ></a>
+            <IconFont type={"icon-more"} style={{ float: "right" }} />
           </div>
           <div className="mineS-mid-myActivFirst clearfix">
             <div className="fl">
@@ -83,6 +148,7 @@ class Mine extends Component {
           </div>
           <div className="mineS-mid-myActiv clearfix">
             <h4 className="fl">我的信息</h4>
+            <input className="fr mineS-mid-myActiv-input" type="button" value="修改用户信息" />
           </div>
           <div className="mineS-mid-myActivFirst clearfix">
             <div className="fl">
@@ -99,7 +165,7 @@ class Mine extends Component {
           <div className="mineS-mid-myActivFirst clearfix">
             <div className="fl">
               <p>用户名</p>
-              <i className="mineS-mid-myActivFirst-i">{username}</i>
+              <i className="mineS-mid-myActivFirst-i">{niName}</i>
             </div>
           </div>
           <div className="mineS-mid-myActivFirst clearfix">
@@ -107,7 +173,6 @@ class Mine extends Component {
               <p>手机号</p>
               <i className="mineS-mid-myActivFirst-i">{phone}</i>
             </div>
-            <input className="fr" type="button" value="绑定手机" />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.css'
 import {
-    Form, Icon, Input, Button, Checkbox, Select,Row, Col,
+    Form, Icon, Input, Button, Checkbox, Select,Row, Col,message
 } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
@@ -101,11 +101,11 @@ class NormalLoginForm extends Component {
         let res = await login(data);
         if (res.data.code === 0) {//登录成功--跳转到首页
             this.props.history.push('/');
-            sessionStorage.QR_TOKEN = res.data.token;
-            //储存账号
+            localStorage.QR_TOKEN = res.data.token;//储存账号
+            message.success("登录成功");
         } else if (res.data.code < 0){//网络错误怎么显示
             let detail = res.data.msg;
-            this.setFieldsFn([new Error(detail)])
+            message.error(detail,5);
         }
     }
     async getPicCode() {

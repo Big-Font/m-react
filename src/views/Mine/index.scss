@@ -10,11 +10,20 @@
         height: 3.75rem;
         background: #41c95b;
         padding-top: 1rem;
-        p{
-            width: 100%;
+        .avatar-uploader > .ant-upload {
+            width: 1.06rem;
             height: 1.06rem;
-            background: url(~@/images/mine/headPic.png) center no-repeat;
-            background-size: 1.06rem 1.06rem;
+            border-radius: 50%;
+            margin: 0 auto;
+            span{
+                padding: 0;
+            }
+            img{
+                width: 1.04rem;
+                height: 1.04rem;
+                border-radius: 50%;
+                margin: 0 auto;
+            }
         }
         b{
             width: 100%;
@@ -42,10 +51,18 @@
             border-bottom:1px solid #e5e5e5;
             background: #fff;
             margin-top: 0.2rem;
-            h4,a{
+            h4,i{
                 font: 500 0.38rem/0.958rem "微软雅黑";
                 margin-left: 0.45rem;
                 margin-right: 0.45rem;
+            }
+            .mineS-mid-myActiv-input{
+                width: 2.2rem;
+                font: 500 0.32rem/0.68rem "微软雅黑";
+                margin-top:0.14rem;
+                margin-right: 0.45rem;
+                background: #41c95b;
+                border-radius: 4px;
             }
         }
         .mineS-mid-myActivFirst{

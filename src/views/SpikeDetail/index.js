@@ -11,10 +11,15 @@ class SpikeDetail extends Component {
     super();
     this.state = {
       id: props.match.params.id,
+      ActiveStatus: '未开始',
       resInfo: {
         startTime: '',
         endTime: ''
-      }
+      },
+      desStatus: [
+        {name: '活动介绍', status: false, data: 'activity', icon: 'icon-guifandaohanglanshaixuanshouqi'},
+        {name: '商家介绍', status: false, data: 'seller', icon: 'icon-guifandaohanglanshaixuanshouqi'},
+      ]
     }
 
     this.handleShow = this.handleShow.bind(this);
@@ -26,18 +31,26 @@ class SpikeDetail extends Component {
       this.setState({
         resInfo: res.data.data
       })
+
     }
   }
 
-  handleShow() {
-
+  handleShow(index) {
+    let desStatus = this.state.desStatus;
+    desStatus[index].status = !desStatus[index].status;
+    this.setState({
+      desStatus
+    })
   }
 
   render() {
     let info = this.state.resInfo;
     return (
       <div className="spike-detail">
-        <img className="good-img" src={info.img} alt=""/>
+        <div className="top-img">
+          <img className="good-img" src={info.img} alt=""/>
+          <div>{this.state.ActiveStatus}</div>
+        </div>
         {/* 秒杀信息 */}
         <div className="spilk-info">
           <h1>{info.name}</h1>
@@ -54,26 +67,37 @@ class SpikeDetail extends Component {
               <h2>活动价格</h2>
               <div className="price">{info.price ? `${info.price}元` : ''}</div>
               <div>商品数量: <b>{info.stock}</b></div>
-              {/* <p>{info.stock}</p> */}
             </div>
           </div>
           {/* 活动介绍 */}
           <div className="des-info">
-            {/* <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
-              <Accordion.Panel header="活动介绍" className="pad">
-                {info.seller}
-              </Accordion.Panel>
-            </Accordion> */}
-            <nav>
+            {
+              this.state.desStatus.map( (item, index) => {
+                  return (
+                      <div key={index}>
+                        <nav onClick={ () => {this.handleShow(index)}}>
+                          <h3>{item.name}</h3>
+                          <IconFont type={item.status ? 'icon-jiantou-copy-copy-copy' : 'icon-jiantou-copy-copy'} />
+                        </nav>
+                        <div className={item.status ? '' : 'un-look'}>&nbsp;&nbsp;&nbsp;&nbsp;{info[item.data]}</div>
+                      </div>
+                  )
+              })
+            }
+            {/* <nav>
               <h3>活动介绍</h3>
               <IconFont type='icon-guifandaohanglanshaixuanshouqi' onClick={ () => {this.handleShow()}} />
             </nav>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;{info.activity}</div>
             <nav>
               <h3>商家介绍</h3>
               <IconFont type='icon-guifandaohanglanshaixuanshouqi' onClick={ () => {this.handleShow()}} />
             </nav>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;{info.seller}</div> */}
           </div>
         </div>
+        {/* 商品活动详情 */}
+        <div className="content" dangerouslySetInnerHTML={{__html: info.goods}}></div>
       </div>
     );
   }

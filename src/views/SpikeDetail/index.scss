@@ -1,8 +1,21 @@
 @import '@/styles/variable.scss';
 
 .spike-detail{
-  .good-img{
-    width: 100%;
+  .top-img{
+    position: relative;
+    .good-img{
+      width: 100%;
+    }
+    >div{
+      position: absolute;
+      top: 0.2rem;
+      right: 0;
+      background: #fff;
+      color: $blue;
+      padding:0 0.6rem 0 0.26rem;
+      line-height: 0.52rem;
+      border-radius: 0.26rem 0 0 0.26rem;
+    }
   }
   .spilk-info{
     width: 92%;
@@ -34,6 +47,7 @@
         }
         p, b {
           color: $blue;
+          // color: $green;
           font-weight: normal;
         }
         >div{
@@ -50,14 +64,16 @@
         .price{
           font-size: 0.46rem;
           color: $blue;
+          // color: $green;
           font-weight: bolder;
           line-height: 0.9rem;
         }
       }
     }
     .des-info{
-
-
+      .un-look{
+        display: none;
+      }
       nav{
         display: flex;
         justify-content: space-between;
@@ -66,12 +82,19 @@
         background: #fff;
         width: 96%;
         margin: 0 auto;
-
         h3{
           color: #383838;
           font-size: 0.24rem;
           line-height: 0.6rem;
         }
+      }
+      >div{
+        background: #fff;
+        width: 96%;
+        margin: 0 auto;
+        padding: 0 0.2rem;
+        font-size: 0.2rem;
+        color: #888888;
       }
     }
   }

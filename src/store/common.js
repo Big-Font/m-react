@@ -42,6 +42,10 @@ class CommonState {
                 this.keyNum = 3;
                 this.headerTitle = "我的"
                 break;
+            case "#/mine/changePersonInfo":
+                this.keyNum = 3;
+                this.headerTitle = "修改用户信息"
+                break;
             default:
                 this.keyNum = 0;
                 this.barName = "首页"

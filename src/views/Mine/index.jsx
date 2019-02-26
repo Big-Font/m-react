@@ -40,6 +40,11 @@ class Mine extends Component {
     }
   }
   toChangePerInfo(){
+    if (!localStorage.getItem('QR_TOKEN')){
+      message.warn("用户未登录",5);
+      this.setState({ loading: false,});
+      return;
+    }
     this.props.history.push('/mine/changePersonInfo');
   }
   goLogin() {
@@ -61,12 +66,6 @@ class Mine extends Component {
   }
   //图片上传时变化函数
   handleChange = (info) => {
-
-    // if (!localStorage.getItem('QR_TOKEN')){
-    //   message.warn("用户未登录,不能修改头像",5);
-    //   this.setState({ loading: false,imageUrl:null });
-    //   return;
-    // };
     if (info.file.status === 'uploading') {
       this.setState({ loading: true });
       return;

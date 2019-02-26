@@ -6,7 +6,8 @@ import DecoratorsList from '@/views/DecoratorsList';
 import CasesDetail from '@/views/CasesDetail';
 import SpikeList from '@/views/SpikeList';
 import SpikeDetail from '@/views/SpikeDetail';
-import Mine from '@/views/Mine';
+import Mine from '@/views/Mine'; 
+import MineChangePInfo from '@/views/Mine/changePersonInfo';
 import Page404 from '@/views/Page404';
 import HeadNav from '@/components/HeadNav'
 import FootNav from '@/components/FootNav'
@@ -41,6 +42,7 @@ export default class Routers extends Component {
                         <Route exact path="/spikeDetail/:id" component={SpikeDetail} />
                         {/* 我的 */}
                         <Route exact path="/mine" component={Mine} />
+                        <Route exact path="/mine/changePersonInfo" component={MineChangePInfo} />
                         <Route exact path="/findDecorator" component={FindDecorator} />
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/login" component={Login} />

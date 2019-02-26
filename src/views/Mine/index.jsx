@@ -9,28 +9,19 @@ import { Upload, Icon, message } from 'antd';
 import { baseUrl } from '@/config/env';
 //把需要的全局状态inject过来
 @withRouter
-@inject('commonState')
+@inject('commonState','mineState')
 @observer
 class Mine extends Component {
   constructor(props) {
     super();
     this.state = {
-      personInfo: {
-        address: null,
-        age: null,
-        email: null,
-        img: null,
-        name: null,
-        phone: null,
-        sex: null,
-        username: null,
-      },
       loading: false,
-      imageUrl: null
+      imageU:null
     }
     this.goLogin = this.goLogin.bind(this);
     this.personInfoInit = this.personInfoInit.bind(this);
     this.customRequest = this.customRequest.bind(this);
+    this.toChangePerInfo = this.toChangePerInfo.bind(this);
   }
   async componentDidMount() {//根据路由修改底部导航选中状态及title内容
     this.props.commonState.selectKey();
@@ -42,12 +33,14 @@ class Mine extends Component {
   async personInfoInit() {
     let res = await personInfo();
     if (res.data.code === 0) {//成功
-      this.setState({
-        personInfo: res.data.data[0],
-      })
+      let obj =  res.data.data[0]
+      this.props.mineState.setPersonInfo(obj);
     } else if (res.data.code < 0) {//网络错误怎么显示
 
     }
+  }
+  toChangePerInfo(){
+    this.props.history.push('/mine/changePersonInfo');
   }
   goLogin() {
     this.props.history.push('/login');
@@ -68,22 +61,26 @@ class Mine extends Component {
   }
   //图片上传时变化函数
   handleChange = (info) => {
-    let self = this;
-    if (!localStorage.getItem('QR_TOKEN')){
-      message.warn("用户未登录,不能修改头像",5);
-      this.setState({ loading: false,imageUrl:null });
-      return;
-    };
+
+    // if (!localStorage.getItem('QR_TOKEN')){
+    //   message.warn("用户未登录,不能修改头像",5);
+    //   this.setState({ loading: false,imageUrl:null });
+    //   return;
+    // };
     if (info.file.status === 'uploading') {
       this.setState({ loading: true });
       return;
     }
     if (info.file.status === 'done') {
       // Get this url from response in real world.
-      this.getBase64(info.file.originFileObj, imageUrl => this.setState({
-        imageUrl,
-        loading: false,
-      }));
+      this.getBase64(info.file.originFileObj, (imageUrl) => {
+        this.setState({
+          loading: false,
+        })
+        let imageU = info.file.response.fileList[0]
+        this.props.mineState.setPersonInfoSomeOne("img",imageU);
+        this.props.mineState.setPersonInfoSomeOne("imageUrl",imageUrl)
+      });
     }
   }
   //自定义交互 不使用 antd 的action
@@ -96,13 +93,14 @@ class Mine extends Component {
   //上传图片
   async uploadAjaxInit () {
     let res = await uploadAjax();
-    console.log(res)
+    console.log(res.data)
   }
   render() {
-    const { personInfo, imageUrl } = this.state;
+    const {mineState} = this.props;
+    let personInfo = mineState._personInfo;
     let email = personInfo.email ? personInfo.email : "(无)";
     let phone = personInfo.phone ? personInfo.phone : "(无)";
-    let personPic = personInfo.img ? personInfo.img : minePic;
+    let imageUrl = personInfo.img ? personInfo.img : minePic;
     let username = personInfo.username ? personInfo.username : phone;
     let niName = personInfo.username ? personInfo.username : "(无)";
     let address = personInfo.address ? personInfo.address : "(无)";
@@ -148,7 +146,12 @@ class Mine extends Component {
           </div>
           <div className="mineS-mid-myActiv clearfix">
             <h4 className="fl">我的信息</h4>
-            <input className="fr mineS-mid-myActiv-input" type="button" value="修改用户信息" />
+            <input 
+              className="fr mineS-mid-myActiv-input" 
+              type="button" 
+              value="修改用户信息"
+              onClick={this.toChangePerInfo}
+           />
           </div>
           <div className="mineS-mid-myActivFirst clearfix">
             <div className="fl">

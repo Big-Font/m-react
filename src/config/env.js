@@ -12,7 +12,8 @@ let baseImgPath;
 
 if (process.env.REACT_APP_SECRET_API === 'development') {
     // 开发环境  npm run build:dev
-    baseUrl = 'http://10.0.79.145:5000/api';
+    // baseUrl = 'http://10.0.79.145:5000/api';
+    baseUrl = 'http://127.0.0.1:5000/api';
     // baseUrl = 'https://qingruiserver.wangshen.top/api';
     baseImgPath = '';
 } else if (process.env.REACT_APP_SECRET_API === 'test') {

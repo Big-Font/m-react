@@ -111,13 +111,13 @@ class Mine extends Component {
             // name="fileName"
             listType="picture-card"
             className="avatar-uploader"
-            accept=".jpg,.jpeg,.bmp,.png,.pdf" 
+            accept=".jpg,.jpeg,.bmp,.png,.pdf"
             showUploadList={false}
             headers = {{
               "Authorization":"Bearer " + localStorage.QR_TOKEN,
               // 'Content-Type': 'multipart/form-data'
             }}
-            action={`${baseUrl}/upload`}//上传图片地址
+            action={`${baseUrl}/upload/userlogo`}//上传图片地址
             // customRequest={this.customRequest}
             beforeUpload={this.beforeUpload}
             onChange={this.handleChange}
@@ -146,9 +146,9 @@ class Mine extends Component {
           </div>
           <div className="mineS-mid-myActiv clearfix">
             <h4 className="fl">我的信息</h4>
-            <input 
-              className="fr mineS-mid-myActiv-input" 
-              type="button" 
+            <input
+              className="fr mineS-mid-myActiv-input"
+              type="button"
               value="修改用户信息"
               onClick={this.toChangePerInfo}
            />

@@ -33,7 +33,7 @@ class Mine extends Component {
   async personInfoInit() {
     let res = await personInfo();
     if (res.data.code === 0) {//成功
-      let obj =  res.data.data[0]
+      let obj =  res.data.data
       this.props.mineState.setPersonInfo(obj);
     } else if (res.data.code < 0) {//网络错误怎么显示
 

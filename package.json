@@ -119,6 +119,13 @@
       ]
     ]
   },
+  "theme": {
+    "primary-color": "#25dd85",
+    "link-color": "#41c95b",
+    "brand-primary": "#25dd85",
+    "color-text-base":  "#3c4041",
+    "color-link": "#25dd85"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

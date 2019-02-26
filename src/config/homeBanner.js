@@ -26,22 +26,26 @@ let simbleToolArr = [{
     classPic: "tool1",
     title: 'tool1',
     name: '装修预算',
+    path: '/spikeList'
 }, {
     classPic: "tool2",
     title: 'tool2',
     name: '装修攻略',
+    path: '/'
 }, {
     classPic: "tool3",
     title: 'tool3',
     name: '装修记账',
+    path: '/'
 }, {
     classPic: "tool4",
     title: 'tool4',
     name: '业主口碑',
+    path: '/'
 },];
 
 export {
     homeBannerPic,
     simbleToolArr
 }
-    
+

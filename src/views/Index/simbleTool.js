@@ -5,6 +5,7 @@
     首页banner
    ====================================================== */
    import React, { Component } from 'react';
+   import { NavLink } from 'react-router-dom'
    import {simbleToolArr} from '@/config/homeBanner';
    import './index.scss';
    class SimbleTool extends Component {
@@ -12,23 +13,26 @@
        super();
      }
      componentDidMount(){
-      
+
      }
      componentWillUnmount(){
-      
+
      }
      render() {
        return (
            <ul className="home-simbleTool clearfix">
                  {
-                    simbleToolArr.map((item,index)=>{ 
+                    simbleToolArr.map((item,index)=>{
                         let classPic = item.classPic;
                         let title = item.title;
                         let name = item.name;
-                        return(                                    
+                        let path = item.path;
+                        return(
                            <li className={index === 3 ? "noMarRight  fl" : "fl"} key={title + index}>
+                              <NavLink to={path} >
                                 <i className={classPic}></i>
                                 <span>{name}</span>
+                              </NavLink>
                            </li>
                         )
                     })
@@ -38,4 +42,3 @@
      }
    }
    export default SimbleTool;
-   

@@ -12,6 +12,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const theme = require('../package.json').theme;
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -94,7 +95,7 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -126,7 +127,7 @@ module.exports = {
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -226,17 +227,21 @@ module.exports = {
             use: [
               {
                 loader: require.resolve('style-loader'),
-              }, 
+              },
               {
                 loader:  require.resolve('css-loader'),
               },
               {
                 loader:  require.resolve('less-loader'),
                 options: {
-                  modifyVars: {
-                    'primary-color': '#41c95b',
-                    'link-color': '#41c95b',
-                  },
+                  modifyVars: theme,
+                  // modifyVars: {
+                  //   'primary-color': '#41c95b',
+                  //   'link-color': '#41c95b',
+                  //   "hd": "2px",
+                  //   "brand-primary": "red",
+                  //   "color-text-base":  "#3c4041",
+                  // },
                   javascriptEnabled: true,
                 },
               }

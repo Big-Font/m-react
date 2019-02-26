@@ -11,6 +11,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const theme = require('../package.json').theme;
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -88,7 +89,7 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -120,7 +121,7 @@ module.exports = {
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -149,7 +150,7 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
+
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
@@ -203,21 +204,27 @@ module.exports = {
             use: [
               {
                 loader: require.resolve('style-loader'),
-              }, 
+              },
               {
                 loader:  require.resolve('css-loader'),
               },
               {
                 loader:  require.resolve('less-loader'),
                 options: {
-                  modifyVars: {
-                    'primary-color': '#41c95b',
-                    'link-color': '#41c95b',
-                  },
+                  // 主题色修改移步到 package.json 中的 theme
+                  modifyVars: theme,
+                  // modifyVars: {
+                  //   "primary-color": "#25dd85",
+                  //   "link-color": "#41c95b",
+                  //   "brand-primary": "#25dd85",
+                  //   "color-text-base":  "#3c4041",
+                  //   "color-link": "#25dd85"
+                  // },
                   javascriptEnabled: true,
                 },
               }
             ],
+            // include: /node_modules/,
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.

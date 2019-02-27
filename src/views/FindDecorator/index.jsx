@@ -48,10 +48,11 @@ class FindDecoratorF extends Component {
     if (res.data.code === 0) {//成功
       let detail = res.data.msg;
       message.success(detail, 5);
-    } else if (res.data.code < 0) {//网络错误怎么显示
-      let detail = res.data.msg;
-      message.error(detail, 5);
     }
+    // else if (res.data.code < 0) {//网络错误怎么显示
+    //   let detail = res.data.msg;
+    //   message.error(detail, 5);
+    // }
   }
   handleCancel = () => this.setState({ previewVisible: false })
 

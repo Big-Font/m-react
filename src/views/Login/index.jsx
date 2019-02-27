@@ -91,7 +91,7 @@ class NormalLoginForm extends Component {
                 value: "",
                 errors: detail,
             },
-        });     
+        });
     }
     async componentDidMount() {
         this.props.commonState.handleStoreHeaderTitle("登录");
@@ -103,10 +103,11 @@ class NormalLoginForm extends Component {
             this.props.history.push('/');
             localStorage.QR_TOKEN = res.data.token;//储存账号
             message.success("登录成功");
-        } else if (res.data.code < 0){//网络错误怎么显示
-            let detail = res.data.msg;
-            message.error(detail,5);
         }
+        // else if (res.data.code < 0){//网络错误怎么显示
+        //     let detail = res.data.msg;
+        //     message.error(detail,5);
+        // }
     }
     async getPicCode() {
         let res = await getPicCode();
@@ -137,7 +138,7 @@ class NormalLoginForm extends Component {
                     <Form.Item>
                         {getFieldDecorator('phone', {
                             rules: [
-                                { required: true, validator: this.inputValidator("phone")}, 
+                                { required: true, validator: this.inputValidator("phone")},
                             ],
                         })(
                             <Input addonBefore={prefixSelector} style={{ width: '100%' }} type="number" />

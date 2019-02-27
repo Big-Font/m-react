@@ -117,10 +117,11 @@ class NormalLoginForm extends Component {
             this.props.history.push('/');
             localStorage.QR_TOKEN = res.data.token;
             message.success("注册成功，直接登录");
-        } else if (res.data.code < 0){//网络错误怎么显示
-            let detail = res.data.msg;
-            message.error(detail,5);
         }
+        // else if (res.data.code < 0){//网络错误怎么显示
+        //     let detail = res.data.msg;
+        //     message.error(detail,5);
+        // }
     }
     //验证码ajax
     async getCodeInit() {
@@ -146,7 +147,7 @@ class NormalLoginForm extends Component {
                 });
                 let detail = res.data.msg;
                 this.setFieldsFn([new Error(detail)])
-                message.error(detail,5);
+                // message.error(detail,5);
             }
         }
 

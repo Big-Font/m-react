@@ -6,7 +6,7 @@ import DecoratorsList from '@/views/DecoratorsList';
 import CasesDetail from '@/views/CasesDetail';
 import SpikeList from '@/views/SpikeList';
 import SpikeDetail from '@/views/SpikeDetail';
-import Mine from '@/views/Mine'; 
+import Mine from '@/views/Mine';
 import MineChangePInfo from '@/views/Mine/changePersonInfo';
 import Page404 from '@/views/Page404';
 import HeadNav from '@/components/HeadNav'
@@ -31,6 +31,7 @@ export default class Routers extends Component {
                 <div>
                     <HeadNav />
                     <Switch>
+                        {/* 首页 */}
                         <Route exact path="/" component={Index} />
                         {/* 装修案例 */}
                         <Route exact path="/decorationCases" component={DecoratorsList} />
@@ -42,10 +43,15 @@ export default class Routers extends Component {
                         <Route exact path="/spikeDetail/:id" component={SpikeDetail} />
                         {/* 我的 */}
                         <Route exact path="/mine" component={Mine} />
+                        {/* 修改个人信息 */}
                         <Route exact path="/mine/changePersonInfo" component={MineChangePInfo} />
+                        {/* 找师傅 */}
                         <Route exact path="/findDecorator" component={FindDecorator} />
+                        {/* 注册 */}
                         <Route exact path="/register" component={Register} />
+                        {/* 登录 */}
                         <Route exact path="/login" component={Login} />
+                        {/* 404页面 */}
                         <Route component={Page404} />
                     </Switch>
                     {

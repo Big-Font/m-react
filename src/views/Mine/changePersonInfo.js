@@ -68,10 +68,11 @@ class ChangePersonInfo extends Component {
             this.props.history.push('/mine');
             let detail = res.data.msg;
             message.success(detail);
-        } else if (res.data.code < 0) {//网络错误怎么显示
-            let detail = res.data.msg;
-            message.error(detail, 5);
         }
+        // else if (res.data.code < 0) {//网络错误怎么显示
+        //     let detail = res.data.msg;
+        //     message.error(detail, 5);
+        // }
     }
     render() {
         const { getFieldDecorator } = this.props.form;

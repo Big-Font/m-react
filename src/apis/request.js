@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { baseUrl } from '../config/env';
-// import { message } from 'antd';
+import { message } from 'antd';
 import { Toast } from 'antd-mobile';
 
 // create an axios instance
@@ -33,10 +33,10 @@ service.interceptors.response.use(response => {
   // Toast.hide();
   // Toast.fail(response.data.msg, 4);
   // 程序级别的错误提示 tost 提示对应后台msg
-  if(response.data.code !== 0) {
+  if(response.data.code !== 0 && response.data.msg) {
     console.log('进入相应拦截器错误处理了');
-    Toast.fail(response.data.msg, 4);
-    // message.error(response.data.msg, 5);
+    // Toast.fail(response.data.msg, 4);
+    message.error(response.data.msg, 5);
   }
   return response
 }, error => {

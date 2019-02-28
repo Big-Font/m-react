@@ -7,6 +7,7 @@ import { personInfo, changePersonSomeInfo,uploadAjax } from '@/apis/modules/mine
 import IconFont from '@/components/Iconfont';
 import { Upload, Icon, message } from 'antd';
 import { baseUrl } from '@/config/env';
+
 //把需要的全局状态inject过来
 @withRouter
 @inject('commonState','mineState')

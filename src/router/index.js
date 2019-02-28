@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, HashRouter, Switch, } from 'react-router-dom';
 
+import AuthRouter from '@/components/AuthRouter';
 import Index from '@/views/Index';
 import DecoratorsList from '@/views/DecoratorsList';
 import CasesDetail from '@/views/CasesDetail';
@@ -28,7 +29,7 @@ export default class Routers extends Component {
         let header = commonState.getHeaderTitleFromStore;
         return (
             <HashRouter>
-                <div>
+                <React.Fragment>
                     <HeadNav />
                     <Switch>
                         {/* 首页 */}
@@ -45,8 +46,9 @@ export default class Routers extends Component {
                         <Route exact path="/mine" component={Mine} />
                         {/* 修改个人信息 */}
                         <Route exact path="/mine/changePersonInfo" component={MineChangePInfo} />
-                        {/* 找师傅 */}
-                        <Route exact path="/findDecorator" component={FindDecorator} />
+                        {/* 找师傅 --- 登录拦截 */}
+                        {/* <Route exact path="/findDecorator" component={FindDecorator} /> */}
+                        <AuthRouter path="/findDecorator" component={FindDecorator} />
                         {/* 注册 */}
                         <Route exact path="/register" component={Register} />
                         {/* 登录 */}
@@ -57,7 +59,7 @@ export default class Routers extends Component {
                     {
                         (header === "登录" ||  header === "注册") ? "" : <FootNav />
                     }
-                </div>
+                </React.Fragment>
             </HashRouter>
         )
     }

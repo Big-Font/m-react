@@ -8,6 +8,7 @@ import { inject, observer } from 'mobx-react';
 import { login, getPicCode } from '@/apis/modules/login';
 import { baseUrl } from '@/config/env';
 import {countryNameArr,regAndLoginErrorMes,RegExpArr} from '@/config/regAndLoginData';
+import { getUrlQuery } from '@/utils';
 const { Option } = Select;
 @withRouter
 //引进全局状态管理
@@ -100,9 +101,10 @@ class NormalLoginForm extends Component {
     async loginInit(data) {
         let res = await login(data);
         if (res.data.code === 0) {//登录成功--跳转到首页
-            this.props.history.push('/');
-            localStorage.QR_TOKEN = res.data.token;//储存账号
-            message.success("登录成功");
+          localStorage.QR_TOKEN = res.data.token;//储存账号
+          message.success("登录成功");
+          let urlQuery = getUrlQuery(this.props.location.search);
+          urlQuery.redirect ? this.props.history.push(urlQuery.redirect) : this.props.history.push('/');
         }
         // else if (res.data.code < 0){//网络错误怎么显示
         //     let detail = res.data.msg;

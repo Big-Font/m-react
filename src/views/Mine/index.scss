@@ -10,19 +10,16 @@
         height: 3.75rem;
         background: #41c95b;
         padding-top: 1rem;
-        .avatar-uploader > .ant-upload {
+        .mineS-top-p{
             width: 1.06rem;
             height: 1.06rem;
             border-radius: 50%;
             margin: 0 auto;
-            span{
-                padding: 0;
-            }
+            border:1px solid #fff;
             img{
-                width: 1.04rem;
-                height: 1.04rem;
+                width: 100%;
                 border-radius: 50%;
-                margin: 0 auto;
+                text-align: center
             }
         }
         b{
@@ -99,4 +96,8 @@
             }
         }
     }
+}
+.header-uploader {
+    margin-bottom: 0.2rem;
+    display:inline-block
 }

@@ -3,11 +3,9 @@ import './index.scss'
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import minePic from '@/images/mine/headPic.png'
-import { personInfo, changePersonSomeInfo,uploadAjax } from '@/apis/modules/mine';
+import { personInfo, } from '@/apis/modules/mine';
 import IconFont from '@/components/Iconfont';
-import { Upload, Icon, message } from 'antd';
-import { baseUrl } from '@/config/env';
-
+import {  message } from 'antd';
 //把需要的全局状态inject过来
 @withRouter
 @inject('commonState','mineState')
@@ -16,12 +14,9 @@ class Mine extends Component {
   constructor(props) {
     super();
     this.state = {
-      loading: false,
-      imageU:null
     }
     this.goLogin = this.goLogin.bind(this);
     this.personInfoInit = this.personInfoInit.bind(this);
-    this.customRequest = this.customRequest.bind(this);
     this.toChangePerInfo = this.toChangePerInfo.bind(this);
   }
   async componentDidMount() {//根据路由修改底部导航选中状态及title内容
@@ -43,7 +38,6 @@ class Mine extends Component {
   toChangePerInfo(){
     if (!localStorage.getItem('QR_TOKEN')){
       message.warn("用户未登录",5);
-      this.setState({ loading: false,});
       return;
     }
     this.props.history.push('/mine/changePersonInfo');
@@ -51,50 +45,7 @@ class Mine extends Component {
   goLogin() {
     this.props.history.push('/login');
   }
-  //上传图片限制
-  beforeUpload = (file) => {
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-      message.error('图片不能超过2MB!');
-    }
-    return isLt2M;
-  }
-  //前端显示图片 转base64
-  getBase64 = (img, callback) => {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-  }
-  //图片上传时变化函数
-  handleChange = (info) => {
-    if (info.file.status === 'uploading') {
-      this.setState({ loading: true });
-      return;
-    }
-    if (info.file.status === 'done') {
-      // Get this url from response in real world.
-      this.getBase64(info.file.originFileObj, (imageUrl) => {
-        this.setState({
-          loading: false,
-        })
-        let imageU = info.file.response.fileList[0]
-        this.props.mineState.setPersonInfoSomeOne("img",imageU);
-        this.props.mineState.setPersonInfoSomeOne("imageUrl",imageUrl)
-      });
-    }
-  }
-  //自定义交互 不使用 antd 的action
-  async customRequest () {
-    if (!localStorage.getItem('QR_TOKEN')){
-      return;
-    };
-    await this.uploadAjaxInit();
-  }
-  //上传图片
-  async uploadAjaxInit () {
-    let res = await uploadAjax();
-    console.log(res.data)
-  }
+  
   render() {
     const {mineState} = this.props;
     let personInfo = mineState._personInfo;
@@ -107,25 +58,9 @@ class Mine extends Component {
     return (
       <div className="mineS">
         <div className="mineS-top">
-          <Upload
-            // name="fileName"
-            listType="picture-card"
-            className="avatar-uploader"
-            accept=".jpg,.jpeg,.bmp,.png,.pdf"
-            showUploadList={false}
-            headers = {{
-              "Authorization":"Bearer " + localStorage.QR_TOKEN,
-              // 'Content-Type': 'multipart/form-data'
-            }}
-            action={`${baseUrl}/upload/userlogo`}//上传图片地址
-            // customRequest={this.customRequest}
-            beforeUpload={this.beforeUpload}
-            onChange={this.handleChange}
-          >
-            {imageUrl ? <img src={imageUrl} alt="avatar" /> : <div>
-              <Icon type={this.state.loading ? 'loading' : 'plus'} style={{fontSize:"0.4rem"}} />
-            </div>}
-          </Upload>
+          <p className="mineS-top-p">
+            <img src={imageUrl} alt="" />
+          </p>
           {
             !localStorage.getItem('QR_TOKEN') ?
               <input type="button" value="点击登录" onClick={this.goLogin} /> :

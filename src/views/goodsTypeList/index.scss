@@ -1,0 +1,50 @@
+@import '@/styles/variable.scss';
+
+.goods-type-list{
+  background: #f3f5f7;
+  width: 100%;
+  display: flex;
+  height: calc(100vh - 0.8rem - 0.9rem);
+  .nav{
+    width: 20%;
+    line-height: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    background: #fff;
+    >div{
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #e5e5e5;
+      border-right: 1px solid #e5e5e5;
+    }
+    .active{
+      color: $blue;
+      border-right: none;
+      background: #f3f5f7;
+    }
+  }
+  .two-nav{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow-y: auto;
+    margin-left: 5%;
+    background: #fff;
+    justify-content: space-between;
+    >div{
+      width: 30%;
+      height: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .type-img{
+        width: 0.95rem;
+        height: 0.95rem;
+      }
+    }
+  }
+}

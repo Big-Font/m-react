@@ -3,7 +3,7 @@
     李雪魁
     2018/12/31
     头部导航数据状态
-    
+
    ====================================================== */
 
 import { observable, computed, action, autorun } from 'mobx';
@@ -12,6 +12,7 @@ class CommonState {
     @observable headerTitle = '首页';
     @observable keyNum = 0;
     @computed get getHeaderTitleFromStore() {
+        // alert(111)
         return this.headerTitle;
     }
     @computed get _keyNum () {
@@ -21,28 +22,28 @@ class CommonState {
         this.headerTitle = title;
     }
     @action selectKey() {
-        let pathNameRouter = window.location.hash;
+        let pathNameRouter = window.location.pathname;
         this.updateRouterKey(pathNameRouter);
     }
     @action updateRouterKey = (key) => {
         switch (key) {
-            case "#/findDecorator":
+            case "/findDecorator":
                 this.keyNum = 2;
                 this.headerTitle = "找师傅"
                 break;
-            case "#/":
+            case "/":
                 this.keyNum = 0;
                 this.headerTitle = "首页"
                 break;
-            case "#/decorationCases":
+            case "/decorationCases":
                 this.keyNum = 1;
                 this.headerTitle = "装修案例"
                 break;
-            case "#/mine":
+            case "/mine":
                 this.keyNum = 3;
                 this.headerTitle = "我的"
                 break;
-            case "#/mine/changePersonInfo":
+            case "/mine/changePersonInfo":
                 this.keyNum = 3;
                 this.headerTitle = "修改用户信息"
                 break;

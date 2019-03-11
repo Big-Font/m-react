@@ -18,6 +18,13 @@ export default
         iconClass: 'icon-iconmingxinganli'
     },
     {
+      keyR: '/goodsTypeList',
+      title: '商品',
+      class: 'acs-list-goods',
+      // iconClass: 'acs-list-bg'
+      iconClass: 'icon-iconmingxinganli'
+    },
+    {
         keyR: '/findDecorator',
         title: '找师傅',
         class: 'acs-list',

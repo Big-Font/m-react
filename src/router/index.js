@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, HashRouter, Switch, } from 'react-router-dom';
+import { Route, HashRouter, BrowserRouter, Switch } from 'react-router-dom';
 
 import AuthRouter from '@/components/AuthRouter';
 import Index from '@/views/Index';
@@ -10,7 +10,8 @@ import SpikeDetail from '@/views/SpikeDetail';
 import Mine from '@/views/Mine';
 import MineChangePInfo from '@/views/Mine/changePersonInfo';
 import goodsTypeList from '@/views/goodsTypeList';
-import GoodsList from '@/views/GoodsList';
+import GoodDetail from '@/views/GoodDetail';
+import Shopcar from '@/views/Shopcar';
 import Page404 from '@/views/Page404';
 import HeadNav from '@/components/HeadNav'
 import FootNav from '@/components/FootNav'
@@ -19,19 +20,24 @@ import Register from '@/views/Register'
 import FindDecorator from '@/views/FindDecorator'
 import GetWechatUserInfo from '@/views/GetWechatUserInfo'
 import { inject, observer } from 'mobx-react';
+
 //引进全局状态管理
 //把需要的全局状态inject过来
 @inject('commonState')
 @observer
 export default class Routers extends Component {
     constructor(props) {
-        super();
+        super(props);
     }
     render () {
         const {commonState} = this.props;
         let header = commonState.getHeaderTitleFromStore;
+        let showFootNav = ['/', '/decorationCases', '/spikeList', '/mine', '/findDecorator', '/goodsTypeList'].some( item => {
+          return item === window.location.pathname;
+        })
+        console.log('是否显示底部导航栏:', showFootNav)
         return (
-            <HashRouter>
+            <BrowserRouter>
                 <React.Fragment>
                     <HeadNav />
                     <Switch>
@@ -40,11 +46,11 @@ export default class Routers extends Component {
                         {/* 装修案例 */}
                         <Route exact path="/decorationCases" component={DecoratorsList} />
                         {/* 装修案例详情 */}
-                        <Route exact path="/casesDetail/:id" component={CasesDetail} />
+                        <Route path="/casesDetail/:id" component={CasesDetail} />
                         {/* 秒杀活动列表 */}
                         <Route exact path="/spikeList" component={SpikeList} />
                         {/* 秒杀活动详情 */}
-                        <Route exact path="/spikeDetail/:id" component={SpikeDetail} />
+                        <Route path="/spikeDetail/:id" component={SpikeDetail} />
                         {/* 我的 */}
                         <Route exact path="/mine" component={Mine} />
                         {/* 修改个人信息 */}
@@ -54,8 +60,10 @@ export default class Routers extends Component {
                         <AuthRouter path="/findDecorator" component={FindDecorator} />
                         {/* 商品分类列表 */}
                         <Route exact path="/goodsTypeList" component={goodsTypeList} />
-                        {/* 商品列表 */}
-                        <Route exact path="/goodsList/:genreId" component={GoodsList} />
+                        {/* 商品详情 */}
+                        <Route path="/goodDetail/:id" component={GoodDetail} />
+                        {/* 购物车 */}
+                        <Route exact path="/shopcar" component={Shopcar} />
                         {/* 注册 */}
                         <Route exact path="/register" component={Register} />
                         {/* 登录 */}
@@ -66,10 +74,10 @@ export default class Routers extends Component {
                         <Route component={Page404} />
                     </Switch>
                     {
-                        (header === "登录" ||  header === "注册") ? null : <FootNav />
+                        showFootNav ?  <FootNav /> : null
                     }
                 </React.Fragment>
-            </HashRouter>
+            </BrowserRouter>
         )
     }
 }

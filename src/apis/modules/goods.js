@@ -27,3 +27,12 @@ export function getGoodDetailAPI(data) {
     data
   })
 }
+
+// 添加购物车
+export function addShopcarAPI(data) {
+  return request({
+    url: '/addShopcar',
+    method: 'post',
+    data
+  })
+}

@@ -19,8 +19,45 @@
       justify-content: space-around;
     }
     .active{
-        i,p{
-            color: $green;
+      i,p{
+        color: $green;
+      }
+      .icon{
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-top: -0.6rem;
+        border-radius: 50%;
+        -webkit-animation: to_big 0.3s 1;
+        animation: to_big 0.3s 1;
+      }
+    }
+    .icon{
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      -webkit-animation: to_small 0.3s 1;
+      animation: to_small 0.3s 1;
+    }
+    @keyframes to_big{
+      0%{
+        width: 0.75rem;
+        height: 0.75rem;
+      }
+      100%{
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-top: -0.6rem;
+      }
+    }
+    @keyframes to_small{
+        0%{
+          width: 1.2rem;
+          height: 1.2rem;
+          margin-top: -0.6rem;
+        }
+        100%{
+          width: 0.75rem;
+          height: 0.75rem;
         }
     }
 }

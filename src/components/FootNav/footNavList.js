@@ -42,7 +42,7 @@ class FootNavList extends Component {
                 <NavLink
                   exact
                   to={keyR}
-                  // className={classN}
+                  className={classN}
                   key={titleName+i}
                   activeClassName="active"
                   onClick={this.getHeaderTitleFn(titleName)}
@@ -57,9 +57,18 @@ class FootNavList extends Component {
                   //     }
                   // }}
                 >
-                    <IconFont type={iconClass} style={{ fontSize: '0.4rem'}}/>
-                    {/* <div className={iconClass}></div> */}
-                    <p>{titleName}</p>
+                  {
+                    classN === 'acs-list-goods'
+                    ?
+                    <img className="icon" src={require('@/images/icon/16.png')} alt=""/>
+                    :
+                    <React.Fragment>
+                      <IconFont type={iconClass} style={{ fontSize: '0.4rem'}}/>
+                      <p>{titleName}</p>
+                    </React.Fragment>
+                  }
+
+
                 </NavLink>
               )
             })

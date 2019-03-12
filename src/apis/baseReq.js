@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { baseUrl } from '../config/env';
-import { message } from 'antd';
-import { Toast } from 'antd-mobile';
 
 // create an axios instance
 const baseConfig = {

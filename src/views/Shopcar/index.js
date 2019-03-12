@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+require('./index.scss');
 
 class Shopcar extends Component {
   render() {
     return (
       <div>
-         <h2>Shopcar</h2>
+
       </div>
     );
   }

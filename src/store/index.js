@@ -15,8 +15,11 @@
 // 总状态管理页面
 import commonState from './common';
 import mineState from './mine'
+import userState from './user'
+
 const stores = {
     commonState,
-    mineState
+    mineState,
+    userState
 };//合成数据暴露在全局
 export default  stores;

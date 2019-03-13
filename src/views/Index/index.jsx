@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import AdBanner from './adBanner';//banner
 import DecorationCase from '@/components/DecorationCase';
 import SimbleTool from './simbleTool';
+import FootNav from '@/components/FootNav'
 import { getWechatSign } from '@/apis/modules/wechat';
 import wx from 'weixin-js-sdk';
 import './index.scss'
@@ -138,6 +139,7 @@ class Index extends Component {
         <SimbleTool />
         <DecorationCase titleName="经典装修" />
         <DecorationCase titleName="设计美学" />
+        <FootNav />
       </div>
     );
   }

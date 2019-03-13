@@ -45,7 +45,7 @@ service.interceptors.response.use(response => {
       case 401:
         // 登录过期，清除token
         localStorage.removeItem('QR_TOKEN');
-        // window.location.reload();
+        window.location.reload();
         break;
     }
   }

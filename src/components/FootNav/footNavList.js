@@ -44,7 +44,7 @@ class FootNavList extends Component {
                   to={keyR}
                   className={classN}
                   key={titleName+i}
-                  activeClassName="active"
+                  // activeClassName="active"
                   onClick={this.getHeaderTitleFn(titleName)}
                   // isActive={(match, location)=>{//选择函数
                   //     if (!match) {

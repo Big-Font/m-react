@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { getGoodDetailAPI, addShopcarAPI } from '@/apis/modules/goods';
 import IconFont from '@/components/Iconfont';
+import { inject, observer } from 'mobx-react';
 import { message, Badge } from 'antd';
 require('./index.scss');
 
+@inject('userState')
 @withRouter
 class GoodDetail extends Component {
   constructor(props) {
@@ -17,7 +19,7 @@ class GoodDetail extends Component {
   }
 
   async componentDidMount() {
-    console.log(this.props, this.props.match.params.id)
+    this.props.userState.getUserShopCarList();
     let id = this.props.match.params.id;
     let res = await getGoodDetailAPI({id});
     if(res.data.code === 0) {
@@ -64,11 +66,11 @@ class GoodDetail extends Component {
         <div className="content" dangerouslySetInnerHTML={{__html: detail.detail}}></div>
         {/* 底部按钮 */}
         <div className="shopping">
-          <div>
-            <Badge  className="icon" count={99}>
+          <NavLink to="/shopcar" className="to-shopcar">
+            <Badge  className="icon" count={this.props.userState._shopCarTotalNum}>
               <IconFont className="shopping-icon" type="icon-gouwu1" />
             </Badge>
-          </div>
+          </NavLink>
           <div className="in-shopcar" onClick={() => {this.buyGood(detail)}}>
             加入购物车
           </div>

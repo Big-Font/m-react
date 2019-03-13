@@ -5,7 +5,9 @@ import { inject, observer } from 'mobx-react';
 import minePic from '@/images/mine/headPic.png'
 import { personInfo, } from '@/apis/modules/mine';
 import IconFont from '@/components/Iconfont';
+import FootNav from '@/components/FootNav';
 import {  message } from 'antd';
+
 //把需要的全局状态inject过来
 @withRouter
 @inject('commonState','mineState')
@@ -45,7 +47,7 @@ class Mine extends Component {
   goLogin() {
     this.props.history.push('/login');
   }
-  
+
   render() {
     const {mineState} = this.props;
     let personInfo = mineState._personInfo;
@@ -113,6 +115,7 @@ class Mine extends Component {
             </div>
           </div>
         </div>
+        <FootNav />
       </div>
     );
   }

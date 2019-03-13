@@ -36,3 +36,12 @@ export function addShopcarAPI(data) {
     data
   })
 }
+
+// 获取用户购物车列表
+export function queryShopcarListAPI(data) {
+  return request({
+    url: '/queryShopcarList',
+    method: 'post',
+    data
+  })
+}

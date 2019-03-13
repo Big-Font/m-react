@@ -13,7 +13,7 @@ const { Option } = Select;
 @withRouter
 //引进全局状态管理
 //把需要的全局状态inject过来
-@inject('commonState')
+@inject('commonState', 'userState')
 @observer
 class NormalLoginForm extends Component {
     constructor(props) {
@@ -103,6 +103,7 @@ class NormalLoginForm extends Component {
         if (res.data.code === 0) {//登录成功--跳转到首页
           localStorage.QR_TOKEN = res.data.token;//储存账号
           message.success("登录成功");
+          this.props.userState.getUserShopCarList();
           let urlQuery = getUrlQuery(this.props.location.search);
           urlQuery.redirect ? this.props.history.push(urlQuery.redirect) : this.props.history.push('/');
         }

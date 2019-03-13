@@ -15,7 +15,7 @@ import GoodDetail from '@/views/GoodDetail';
 import Shopcar from '@/views/Shopcar';
 import Page404 from '@/views/Page404';
 import HeadNav from '@/components/HeadNav'
-import FootNav from '@/components/FootNav'
+// import FootNav from '@/components/FootNav'
 import Login from '@/views/Login'
 import Register from '@/views/Register'
 import FindDecorator from '@/views/FindDecorator'
@@ -110,7 +110,7 @@ export default class Routers extends Component {
                         {/* 商品详情 */}
                         <Route path="/goodDetail/:id" component={GoodDetail} />
                         {/* 购物车 */}
-                        <Route exact path="/shopcar" component={Shopcar} />
+                        <AuthRouter path="/shopcar" component={Shopcar} />
                         {/* 注册 */}
                         <Route exact path="/register" component={Register} />
                         {/* 登录 */}
@@ -120,9 +120,9 @@ export default class Routers extends Component {
                         {/* 404页面 */}
                         <Route component={Page404} />
                     </Switch>
-                    {
+                    {/* {
                         showFootNav ?  <FootNav /> : null
-                    }
+                    } */}
                 </React.Fragment>
             </BrowserRouter>
         )

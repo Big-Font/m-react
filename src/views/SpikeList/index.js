@@ -17,7 +17,7 @@ class SpikeList extends Component {
     }
     // 接口传参
     this.query = {
-      type: 0,
+      type: 1,
       place: 0,
       page: 1
     }

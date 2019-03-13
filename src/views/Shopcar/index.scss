@@ -1,2 +1,96 @@
 @import '@/styles/variable.scss';
 
+.shop-car{
+  height: calc(100vh - 0.8rem - 0.13rem);
+  // background: #eeeeee;
+  position: relative;
+  padding-top: 0.13rem;
+  .shop-car-cell{
+    padding: 0.13rem 0.3rem;
+    width: 100%;
+    display: flex;
+    // border-bottom: 1px solid #666666;
+    .shop-img{
+      width: 1.78rem;
+      height: 1.41rem;
+      border: 1px solid #e8e8e8;
+      >img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .good-info{
+      margin-left: 0.26rem;
+      width: calc(100vw - 0.86rem - 1.78rem);
+      .top{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .name{
+          >h2{
+            font-size: 0.26rem;
+            color: #0f0f0f;
+            line-height: 0.52rem;
+          }
+          >p{
+            font-size: 0.22rem;
+            color: #666666;
+            line-height: 0.48rem;
+          }
+        }
+        .delete-good{
+          font-size: 0.6rem;
+          color: $green;
+        }
+      }
+      .bot{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .choose-num{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 35%;
+          position: relative;
+          z-index: 2;
+          .unshow{
+            visibility: hidden;
+          }
+          .num-btn{
+            font-size: 0.35rem;
+            color: $green;
+          }
+          >span{
+            color: #040404;
+            font-size: 0.26rem;
+          }
+        }
+        .price {
+          font-size: 0.34rem;
+          color: $red;
+        }
+      }
+    }
+  }
+  .car-footer{
+    height: 0.89rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background: $green;
+    color: #fff;
+    .total-num{
+      width: 40%;
+      text-align: right;
+    }
+    .total-price{
+      width: 80%;
+      text-align: right;
+      margin: 0 auto;
+    }
+  }
+}

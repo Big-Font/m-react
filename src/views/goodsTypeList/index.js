@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import FootNav from '@/components/FootNav';
 import { getGoodsTypeListAPI, getGoodsAPI } from '@/apis/modules/goods';
 require('./index.scss')
 
@@ -140,6 +141,7 @@ class goodsTypeList extends Component {
             }
           </div>
         </aside>
+        <FootNav />
       </div>
     );
   }

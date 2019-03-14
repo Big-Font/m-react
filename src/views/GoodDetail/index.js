@@ -33,7 +33,8 @@ class GoodDetail extends Component {
   async buyGood(item) {
     if(!localStorage.getItem('QR_TOKEN')) {
       message.info('为了更好的提供服务，请先登录', 5);
-      this.props.history.push(`/login?redirect=${encodeURI(window.location.pathname)}`)
+      console.log(this.props.location)
+      this.props.history.push({pathname: '/login', state: {from: this.props.location.pathname}});
       return;
     }
     let res = await addShopcarAPI({

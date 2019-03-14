@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 require('./index.scss');
 
-class Loading extends Component {
+class NewLogin extends Component {
   render() {
     return (
       <div className="splash">
@@ -14,4 +14,4 @@ class Loading extends Component {
   }
 }
 
-export default Loading;
+export default NewLogin;

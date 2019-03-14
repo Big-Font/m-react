@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Route, HashRouter, BrowserRouter, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
+import AnimatedRouter from 'react-animated-router'; //导入我们的的AnimatedRouter组件
+import 'react-animated-router/animate.css'; //导入默认的切换动画样式，如果需要其它切换样式，可以导入自己的动画样式定义文件
 
 import AuthRouter from '@/components/AuthRouter';
+import Loading from '@/components/Loading';
 import Index from '@/views/Index';
 // import DecoratorsList from '@/views/DecoratorsList';
 // import CasesDetail from '@/views/CasesDetail';
@@ -15,59 +18,54 @@ import GoodDetail from '@/views/GoodDetail';
 import Shopcar from '@/views/Shopcar';
 import Page404 from '@/views/Page404';
 import HeadNav from '@/components/HeadNav'
-// import FootNav from '@/components/FootNav'
+import FootNav from '@/components/FootNav'
 import Login from '@/views/Login'
 import Register from '@/views/Register'
 import FindDecorator from '@/views/FindDecorator'
 import GetWechatUserInfo from '@/views/GetWechatUserInfo'
 import { inject, observer } from 'mobx-react';
 
-
-function MyLoadingComponent({ error, pastDelay }) {
-  if (error) {
-    return <div>Error!</div>;
-  } else if (pastDelay) {
-    return <div>Loading...</div>;
-  } else {
-    return null;
-  }
-}
-
 const DecoratorsList = Loadable({
   loader: () => import(/* webpackChunkName: "DecoratorsList" */ '@/views/DecoratorsList'),
-  loading: MyLoadingComponent,
+  loading: Loading,
   delay: 300
 });
 const CasesDetail = Loadable({
   loader: () => import(/* webpackChunkName: "CasesDetail" */ '@/views/CasesDetail'),
-  loading: MyLoadingComponent,
+  loading: Loading,
   delay: 300
 });
 const SpikeList = Loadable({
   loader: () => import(/* webpackChunkName: "SpikeList" */ '@/views/SpikeList'),
-  loading: MyLoadingComponent,
+  loading: Loading,
   delay: 300
 });
 const SpikeDetail = Loadable({
   loader: () => import(/* webpackChunkName: "SpikeDetail" */ '@/views/SpikeDetail'),
-  loading: MyLoadingComponent,
+  loading: Loading,
   delay: 300
 });
 const Mine = Loadable({
   loader: () => import(/* webpackChunkName: "Mine" */ '@/views/Mine'),
-  loading: MyLoadingComponent,
+  loading: Loading,
   delay: 300
 });
 const ChangePersonInfo = Loadable({
   loader: () => import(/* webpackChunkName: "changePersonInfo" */ '@/views/Mine/changePersonInfo'),
-  loading: MyLoadingComponent,
+  loading: Loading,
   delay: 300
 });
 const GoodsTypeList = Loadable({
   loader: () => import(/* webpackChunkName: "goodsTypeList" */ '@/views/goodsTypeList'),
-  loading: MyLoadingComponent,
+  loading: Loading,
   delay: 300
 });
+const NewLogin = Loadable({
+  loader: () => import(/* webpackChunkName: "newLogin" */ '@/views/NewLogin'),
+  loading: Loading,
+  delay: 300
+});
+
 //引进全局状态管理
 //把需要的全局状态inject过来
 @inject('commonState')
@@ -76,18 +74,27 @@ export default class Routers extends Component {
     constructor(props) {
         super(props);
     }
+
+    componentDidMount(){
+        // 去除splash
+        let el=document.getElementById('splash'); //html标签
+        el.className='loaded';
+        setTimeout(()=>{
+            if(!!el) el.remove();
+        },600);
+    }
+
     render () {
         const {commonState} = this.props;
         let header = commonState.getHeaderTitleFromStore;
         let showFootNav = ['/', '/decorationCases', '/spikeList', '/mine', '/findDecorator', '/goodsTypeList'].some( item => {
           return item === window.location.pathname;
         })
-        console.log('是否显示底部导航栏:', showFootNav)
         return (
             <BrowserRouter>
                 <React.Fragment>
                     <HeadNav />
-                    <Switch>
+                    <AnimatedRouter>
                         {/* 首页 */}
                         <Route exact path="/" component={Index} />
                         {/* 装修案例 */}
@@ -115,11 +122,12 @@ export default class Routers extends Component {
                         <Route exact path="/register" component={Register} />
                         {/* 登录 */}
                         <Route exact path="/login" component={Login} />
+                        {/* <Route exact path="/newlogin" component={NewLogin} /> */}
                         {/* 测试获取用户信息 */}
                         <Route exact path="/getWechatUserInfo" component={GetWechatUserInfo} />
                         {/* 404页面 */}
                         <Route component={Page404} />
-                    </Switch>
+                    </AnimatedRouter>
                     {/* {
                         showFootNav ?  <FootNav /> : null
                     } */}

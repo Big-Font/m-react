@@ -27,7 +27,7 @@ class AuthRouter extends Component {
                 ?
                 <Component {...props} />
                 :
-                <Redirect to={toPath != null ? `/login?redirect=${encodeURI(toPath)}` : '/login'} />
+                <Redirect to={{pathname: '/login', state: {from: props.location}}} />
       }} />
     )
   }

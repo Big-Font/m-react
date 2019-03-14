@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import './index.scss'
 //引进全局状态管理
 import {inject,observer} from 'mobx-react';
@@ -9,6 +9,7 @@ import IconFont from '@/components/Iconfont';
 //把需要的全局状态inject过来
 @inject('commonState')
 @observer
+@withRouter
 class FootNavList extends Component {
   constructor(props) {
     super();
@@ -19,7 +20,6 @@ class FootNavList extends Component {
   }
 
   getHeaderTitleFn = (title) => (event) => {
-    console.log(111)
     const { commonState } = this.props;
     commonState.handleStoreHeaderTitle(title);
     this.setState({

@@ -13,7 +13,10 @@ class ShopCarCell extends Component {
     this.goDetail = this.goDetail.bind(this);
   }
 
-  async handleGoodNum(id, num) {
+  async handleGoodNum(e, id, num) {
+    // 组织冒泡跳转路由
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
     let item = this.props.goodsList
     let nowNum = item.num;
     if(nowNum + num < 0) {
@@ -29,14 +32,15 @@ class ShopCarCell extends Component {
     }
   }
 
-  goDetail() {
-
+  goDetail(e, item) {
+    e.nativeEvent.stopImmediatePropagation();
+    this.props.history.push(`/goodDetail/${item.good_id}`);
   }
 
   render() {
     let item = this.props.goodsList;
     return (
-      <div className="shop-car-cell">
+      <div className="shop-car-cell" onClick={(e) => {this.goDetail(e, item)}}>
         <div className="shop-img">
           <img src={item.img} alt=""/>
         </div>
@@ -48,14 +52,14 @@ class ShopCarCell extends Component {
               <p>规格1</p>
             </div>
             {/* 删除按钮 */}
-            <IconFont onClick={() => {this.handleGoodNum(item.good_id, -item.num)}} className="delete-good" type="icon-shanchu" />
+            <IconFont onClick={(e) => {this.handleGoodNum(e, item.good_id, -item.num)}} className="delete-good" type="icon-shanchu" />
           </div>
           <div className="bot">
             {/* 数量加减 */}
             <div className="choose-num">
-              <IconFont onClick={() => {this.handleGoodNum(item.good_id, -1)}} className={item.num <= 1 ? 'num-btn unshow' : 'num-btn'} type="icon-jian" />
+              <IconFont onClick={(e) => {this.handleGoodNum(e, item.good_id, -1)}} className={item.num <= 1 ? 'num-btn unshow' : 'num-btn'} type="icon-jian" />
               <span>{item.num}</span>
-              <IconFont onClick={() => {this.handleGoodNum(item.good_id, 1)}} className="num-btn" type="icon-jia" />
+              <IconFont onClick={(e) => {this.handleGoodNum(e, item.good_id, 1)}} className="num-btn" type="icon-jia" />
             </div>
             {/* 金额 */}
             <h4 className="price">￥{item.price*item.num}</h4>

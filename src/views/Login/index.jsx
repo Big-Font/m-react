@@ -104,13 +104,9 @@ class NormalLoginForm extends Component {
           localStorage.QR_TOKEN = res.data.token;//储存账号
           message.success("登录成功");
           this.props.userState.getUserShopCarList();
-          let urlQuery = getUrlQuery(this.props.location.search);
-          urlQuery.redirect ? this.props.history.push(urlQuery.redirect) : this.props.history.push('/');
+          let redirect = this.props.location.state;
+          redirect ? this.props.history.push(redirect.from) : this.props.history.push('/');
         }
-        // else if (res.data.code < 0){//网络错误怎么显示
-        //     let detail = res.data.msg;
-        //     message.error(detail,5);
-        // }
     }
     async getPicCode() {
         let res = await getPicCode();

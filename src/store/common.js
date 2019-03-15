@@ -10,16 +10,22 @@ import { observable, computed, action, autorun } from 'mobx';
 
 class CommonState {
     @observable headerTitle = '首页';
+    @observable showHeader = true;
     @observable keyNum = 0;
     @computed get getHeaderTitleFromStore() {
-        // alert(111)
         return this.headerTitle;
+    }
+    @computed get _showHeader() {
+      return this.showHeader;
     }
     @computed get _keyNum () {
         return this.keyNum;
     }
     @action handleStoreHeaderTitle(title) {
         this.headerTitle = title;
+    }
+    @action handleHeaderStatus(status) {
+      this.showHeader = status;
     }
     @action selectKey() {
         let pathNameRouter = window.location.pathname;

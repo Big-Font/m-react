@@ -65,6 +65,11 @@ const NewLogin = Loadable({
   loading: Loading,
   delay: 300
 });
+const NewRegister = Loadable({
+  loader: () => import(/* webpackChunkName: "NewRegister" */ '@/views/Register/newRegister'),
+  loading: Loading,
+  delay: 300
+});
 
 //引进全局状态管理
 //把需要的全局状态inject过来
@@ -81,6 +86,8 @@ export default class Routers extends Component {
         el.className='loaded';
         setTimeout(()=>{
             if(!!el) el.remove();
+            // 显示 header
+            // this.props.commonState.handleHeaderStatus(true);
         },600);
     }
 
@@ -93,7 +100,9 @@ export default class Routers extends Component {
         return (
             <BrowserRouter>
                 <React.Fragment>
-                    <HeadNav />
+                    {
+                      this.props.commonState._showHeader ? <HeadNav /> : null
+                    }
                     <AnimatedRouter>
                         {/* 首页 */}
                         <Route exact path="/" component={Index} />
@@ -119,9 +128,10 @@ export default class Routers extends Component {
                         {/* 购物车 */}
                         <AuthRouter path="/shopcar" component={Shopcar} />
                         {/* 注册 */}
-                        <Route exact path="/register" component={Register} />
+                        <Route exact path="/register" component={NewRegister} />
+                        {/* <Route exact path="/newRegister" component={NewRegister} /> */}
                         {/* 登录 */}
-                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/login" component={NewLogin} />
                         {/* <Route exact path="/newlogin" component={NewLogin} /> */}
                         {/* 测试获取用户信息 */}
                         <Route exact path="/getWechatUserInfo" component={GetWechatUserInfo} />

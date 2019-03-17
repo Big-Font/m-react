@@ -4,6 +4,7 @@ import AdBanner from './adBanner';//banner
 import Swiper from './component/swiper';
 import DecorationCase from '@/components/DecorationCase';
 import SimbleTool from './component/simbleTool';
+import AdsCase from '@/components/AdsCase';
 import FootNav from '@/components/FootNav';
 import { getBanner } from '@/apis/modules';
 import { getWechatSign } from '@/apis/modules/wechat';
@@ -148,7 +149,8 @@ class Index extends Component {
         </div> */}
         <div className="home">
           <SimbleTool />
-          <DecorationCase titleName="经典装修" />
+          <AdsCase titleName="秒杀活动" data={[1]} />
+          {/* <DecorationCase titleName="经典装修" /> */}
           <DecorationCase titleName="设计美学" />
           <FootNav />
         </div>

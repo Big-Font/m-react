@@ -2,14 +2,12 @@
 
 .shop-car{
   height: calc(100vh - 0.8rem - 0.13rem);
-  // background: #eeeeee;
   position: relative;
   padding-top: 0.13rem;
   .shop-car-cell{
     padding: 0.13rem 0.3rem;
     width: 100%;
     display: flex;
-    // border-bottom: 1px solid #666666;
     .shop-img{
       width: 1.78rem;
       height: 1.41rem;
@@ -40,7 +38,7 @@
         }
         .delete-good{
           font-size: 0.6rem;
-          color: $green;
+          color: $blue;
         }
       }
       .bot{
@@ -59,7 +57,7 @@
           }
           .num-btn{
             font-size: 0.35rem;
-            color: $green;
+            color: $blue;
           }
           >span{
             color: #040404;
@@ -81,7 +79,7 @@
     display: flex;
     width: 100%;
     align-items: center;
-    background: $green;
+    background: $blue;
     color: #fff;
     .total-num{
       width: 40%;

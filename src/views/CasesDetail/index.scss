@@ -42,7 +42,7 @@
 .info{
   color: #2b2b2b;
   position: relative;
-  border: 1px solid $green;
+  border: 1px solid $blue;
   width: 90%;
   margin: 0.4rem auto;
   padding: 0.4rem 0.2rem 0.2rem;
@@ -55,7 +55,7 @@
     background: #fff;
     padding: 0 0.2rem;
     font-size: 0.24rem;
-    color: $green;
+    color: $blue;
   }
   >div{
     font-size: 0.24rem;
@@ -65,14 +65,17 @@
       display: flex;
       h5{
         font-size: 0.24rem;
-        color: $green;
+        color: #323232;
         margin-right: 0.2rem;
       }
       i{
         font-size: 0.3rem;
-        color: $green;
+        color: $blue;
         margin-right: 0.1rem;
         margin-top: 0.02rem;
+      }
+      p{
+        color: #939393;
       }
     }
   }

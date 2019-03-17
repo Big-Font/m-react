@@ -1,3 +1,5 @@
+@import '@/styles/variable.scss';
+
 .adCase{
     width:100%;
     position: relative;
@@ -8,7 +10,7 @@
         .adCase-head-i{
             width:0.14rem;
             height: 0.3rem;
-            background: #41c95b;
+            background: $blue;
             position: absolute;
             top:0.5rem;
             left: -0.45rem;

@@ -29,8 +29,8 @@
         height: 0.4rem;
         font-size: 0.26rem;
         padding: 0 0.12rem;
-        border: 1px solid $red;
-        background: $red;
+        border: 1px solid $blue;
+        background: $blue;
         color: #fff;
         border-radius: 0.1rem;
         margin-right: 0.2rem;
@@ -74,12 +74,12 @@
       height: 0.56rem;
       .shopping-icon{
         font-size: 0.6rem;
-        color: red;
+        color: $blue;
       }
     }
     .in-shopcar{
       width: 60%;
-      background: $red;
+      background: $blue;
       color: #fff;
       line-height: 0.98rem;
       text-align: center;

@@ -16,3 +16,15 @@ eslint 不检测这个文件，在开头 /* eslint-disable */在文件结尾/* e
 "lint": "eslint --ext .js --ext .jsx src/",
 "precommit": "npm run lint"
 git commit 强制执行 eslint 通过的代码
+
+#### 主题
+
+```
+"theme": {
+    "primary-color": "#25dd85",
+    "link-color": "#41c95b",
+    "brand-primary": "#25dd85",
+    "color-text-base": "#3c4041",
+    "color-link": "#25dd85"
+  },
+```

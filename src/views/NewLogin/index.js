@@ -34,6 +34,10 @@ class NewLogin extends Component {
     console.log(this.props.commonState._showHeader)
   }
 
+  componentDidUpdate() {
+    this.props.commonState.handleHeaderStatus(false);
+  }
+
   // 手机号校验
   onPhoneChange(phone) {
     if(phone.replace(/\s/g, '').length < 11) {
@@ -144,7 +148,7 @@ class NewLogin extends Component {
     return (
       <div className="login">
         {/* 关闭按钮 */}
-        <IconFont onClick={() => {this.props.history.push('/mine')}} type="delete-good" className="close" />
+        <IconFont onClick={() => {this.props.history.push('/mine')}} type="icon-guanbi" className="close" />
         {/* 头部logo */}
         <div className="logo">
           <h1></h1>
@@ -184,7 +188,7 @@ class NewLogin extends Component {
         </div>
         <div className="register">
           <p>没有账号？</p>
-          <NavLink to="/register" >立即注册 ></NavLink>
+          <a onClick={() => {this.props.history.push('/register')}} >立即注册 ></a>
         </div>
         <Button onClick={this.login} className="login-btn" type="primary">立即登录</Button>
       </div>

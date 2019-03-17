@@ -101,8 +101,9 @@ export default class Routers extends Component {
             <BrowserRouter>
                 <React.Fragment>
                     {
-                      this.props.commonState._showHeader ? <HeadNav /> : null
+                      this.props.commonState._showHeader ? <HeadNav>{this.props.commonState._showHeader}</HeadNav> : null
                     }
+                    <div>{this.props.commonState._showHeader}</div>
                     <AnimatedRouter>
                         {/* 首页 */}
                         <Route exact path="/" component={Index} />
@@ -123,6 +124,7 @@ export default class Routers extends Component {
                         <AuthRouter path="/findDecorator" component={FindDecorator} />
                         {/* 商品分类列表 */}
                         <Route exact path="/goodsTypeList" component={GoodsTypeList} />
+                        {/* <Route exact path={{pathname: '/goodsTypeList', state={title: '商品列表'}}} component={GoodsTypeList} /> */}
                         {/* 商品详情 */}
                         <Route path="/goodDetail/:id" component={GoodDetail} />
                         {/* 购物车 */}

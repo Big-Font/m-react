@@ -67,8 +67,6 @@ class FootNavList extends Component {
                       <p>{titleName}</p>
                     </React.Fragment>
                   }
-
-
                 </NavLink>
               )
             })

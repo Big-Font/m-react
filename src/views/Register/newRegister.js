@@ -35,6 +35,10 @@ class NewRegister extends Component {
     this.props.commonState.handleHeaderStatus(false);
   }
 
+  componentDidUpdate() {
+    this.props.commonState.handleHeaderStatus(false);
+  }
+
   // 手机号校验
   onPhoneChange= (phone) => {
     if(phone.replace(/\s/g, '').length < 11) {
@@ -225,7 +229,7 @@ class NewRegister extends Component {
     return (
       <div className="register">
         {/* 关闭按钮 */}
-        <IconFont onClick={() => {this.props.history.push('/mine')}} type="delete-good" className="close" />
+        <IconFont onClick={() => {this.props.history.push('/mine')}} type="icon-guanbi" className="close" />
         {/* 头部logo */}
         <div className="logo">
           <h1></h1>
@@ -283,7 +287,7 @@ class NewRegister extends Component {
         </div>
         <div className="has-account">
           <p>已有账号？</p>
-          <NavLink to="/login" >去登录 ></NavLink>
+          <a onClick={() => {this.props.history.push('/login')}} >去登录 ></a>
         </div>
         <Button onClick={this.register} className="login-btn" type="primary">立即注册</Button>
       </div>

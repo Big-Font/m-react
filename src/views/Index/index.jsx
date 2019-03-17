@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import AdBanner from './adBanner';//banner
+import Swiper from './component/swiper';
 import DecorationCase from '@/components/DecorationCase';
-import SimbleTool from './simbleTool';
-import FootNav from '@/components/FootNav'
+import SimbleTool from './component/simbleTool';
+import FootNav from '@/components/FootNav';
+import { getBanner } from '@/apis/modules';
 import { getWechatSign } from '@/apis/modules/wechat';
 import wx from 'weixin-js-sdk';
 import './index.scss'
@@ -14,7 +16,7 @@ class Index extends Component {
   constructor(props) {
     super();
     this.state = {
-
+      banners: []
     }
     this.wechatShareInit = this.wechatShareInit.bind(this)
   }
@@ -24,6 +26,13 @@ class Index extends Component {
     let url = window.location.href.split('#')[0];
     let res = await getWechatSign({url});
     this.wechatShareInit(res.data.params, url);
+
+    let banners = await getBanner();
+    if(banners.data.code === 0) {
+      this.setState({
+        banners: banners.data.list
+      })
+    }
   }
 
   wechatShareInit(params, url) {
@@ -127,19 +136,22 @@ class Index extends Component {
 
   render() {
     return (
-      <div className="home">
-        <AdBanner />
-        <div className="home-importADShow clearfix">
+      <div>
+        <Swiper banners={this.state.banners} />
+        {/* <AdBanner /> */}
+        {/* <div className="home-importADShow clearfix">
           <div className="fl home-importADShow-left"></div>
           <div className="fl home-importADShow-right">
             <p></p>
             <p></p>
           </div>
+        </div> */}
+        <div className="home">
+          <SimbleTool />
+          <DecorationCase titleName="经典装修" />
+          <DecorationCase titleName="设计美学" />
+          <FootNav />
         </div>
-        <SimbleTool />
-        <DecorationCase titleName="经典装修" />
-        <DecorationCase titleName="设计美学" />
-        <FootNav />
       </div>
     );
   }

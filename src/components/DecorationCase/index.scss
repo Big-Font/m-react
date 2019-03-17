@@ -1,3 +1,5 @@
+@import '@/styles/variable.scss';
+
 .decorationCase{
     width:100%;
     position: relative;
@@ -8,18 +10,20 @@
         .decorationCase-head-i{
             width:0.14rem;
             height: 0.3rem;
-            background: #41c95b;
+            background: $blue;
             position: absolute;
             top:0.5rem;
             left: -0.45rem;
             margin:0;
         }
-        h4{
-            font:500 0.38rem/1.23rem "Microsoft Yahei"
+        h4, a{
+          font-size: 0.38rem;
+          line-height: 1.23rem;
+            // font:500 0.38rem/1.23rem "Microsoft Yahei"
         }
-        a{
-            font:normal 0.28rem/1.23rem "Microsoft Yahei"
-        }
+        // a{
+        //     font:normal 0.28rem/1.23rem "Microsoft Yahei"
+        // }
     }
     .decorationCase-ad{
         border-radius: 5px;

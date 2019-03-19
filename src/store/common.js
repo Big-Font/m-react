@@ -10,7 +10,8 @@ import { observable, computed, action, autorun } from 'mobx';
 
 class CommonState {
     @observable headerTitle = '首页';
-    @observable showHeader = true;
+    @observable showHeader = false;
+    @observable showFooter = false;
     @observable keyNum = 0;
     @computed get getHeaderTitleFromStore() {
         return this.headerTitle;
@@ -18,11 +19,17 @@ class CommonState {
     @computed get _showHeader() {
       return this.showHeader;
     }
+    @computed get _showFooter() {
+      return this.showFooter;
+    }
     @computed get _keyNum () {
         return this.keyNum;
     }
     @action handleStoreHeaderTitle(title) {
         this.headerTitle = title;
+    }
+    @action handleFooterStatus(status) {
+      this.showFooter = status;
     }
     @action handleHeaderStatus(status) {
       this.showHeader = status;

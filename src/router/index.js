@@ -78,6 +78,9 @@ const NewRegister = Loadable({
 export default class Routers extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+          showFootNav: true
+        }
     }
 
     componentDidMount(){
@@ -87,23 +90,17 @@ export default class Routers extends Component {
         setTimeout(()=>{
             if(!!el) el.remove();
             // 显示 header
-            // this.props.commonState.handleHeaderStatus(true);
+            this.props.commonState.handleHeaderStatus(true);
         },600);
     }
 
     render () {
-        const {commonState} = this.props;
-        let header = commonState.getHeaderTitleFromStore;
-        let showFootNav = ['/', '/decorationCases', '/spikeList', '/mine', '/findDecorator', '/goodsTypeList'].some( item => {
-          return item === window.location.pathname;
-        })
         return (
             <BrowserRouter>
                 <React.Fragment>
                     {
                       this.props.commonState._showHeader ? <HeadNav>{this.props.commonState._showHeader}</HeadNav> : null
                     }
-                    <div>{this.props.commonState._showHeader}</div>
                     <AnimatedRouter>
                         {/* 首页 */}
                         <Route exact path="/" component={Index} />
@@ -140,9 +137,9 @@ export default class Routers extends Component {
                         {/* 404页面 */}
                         <Route component={Page404} />
                     </AnimatedRouter>
-                    {/* {
-                        showFootNav ?  <FootNav /> : null
-                    } */}
+                    {
+                        this.props.commonState._showFooter ?  <FootNav /> : null
+                    }
                 </React.Fragment>
             </BrowserRouter>
         )

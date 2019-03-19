@@ -10,20 +10,27 @@ import './index.scss'
 class DecoratorsList extends Component {
   constructor(props) {
     super();
-    this.state = {
+  }
 
-    }
-
-}
   componentDidMount() {//根据路由修改底部导航选中状态及title内容
+    this.props.commonState.handleFooterStatus(true);
     this.props.commonState.selectKey();
   }
+
+  componentDidUpdate() {
+    this.props.commonState.handleFooterStatus(true);
+  }
+
+  componentWillUnmount() {
+    this.props.commonState.handleFooterStatus(false);
+  }
+
   render() {
     return (
       <div className="decoration">
         <AdsCase titleName="秒杀活动" data={[1]} />
         <DecorationCase titleName="装修案例"  />
-        <FootNav />
+        {/* <FootNav /> */}
       </div>
     );
   }

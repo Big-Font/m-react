@@ -188,7 +188,7 @@ class NewLogin extends Component {
         </div>
         <div className="register">
           <p>没有账号？</p>
-          <a onClick={() => {this.props.history.push('/register')}} >立即注册 ></a>
+          <a onClick={() => {this.props.history.push({pathname: '/register', state: {from: this.props.location.state ? this.props.location.state.from : '/'}})}} >立即注册 ></a>
         </div>
         <Button onClick={this.login} className="login-btn" type="primary">立即登录</Button>
       </div>

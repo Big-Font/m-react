@@ -214,7 +214,8 @@ class NewRegister extends Component {
     if (res.data.code === 0) {//注册成功--跳转到首页
       localStorage.QR_TOKEN = res.data.token;
       Toast.success("欢迎成为晴睿装饰的会员", 3);
-      this.props.history.push('/');
+      let redirect = this.props.location.state;
+      redirect ? this.props.history.push(redirect.from) : this.props.history.push('/');
     }
     this.setState({
       emailSendCode: 0

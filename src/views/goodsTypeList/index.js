@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
 import FootNav from '@/components/FootNav';
 import { getGoodsTypeListAPI, getGoodsAPI } from '@/apis/modules/goods';
 require('./index.scss')
 
+@inject('commonState')
+@observer
 @withRouter
 class goodsTypeList extends Component {
   constructor(props) {
@@ -25,6 +28,7 @@ class goodsTypeList extends Component {
   }
 
   async componentDidMount() {
+    this.props.commonState.handleFooterStatus(true);
     let res = await getGoodsTypeListAPI();
     if(res.data.code === 0) {
       let list = res.data.result;
@@ -32,6 +36,15 @@ class goodsTypeList extends Component {
       this.twoNavInit(appendBlock, list);
     }
   }
+
+  componentDidUpdate() {
+    this.props.commonState.handleFooterStatus(true);
+  }
+
+  componentWillUnmount() {
+    this.props.commonState.handleFooterStatus(false);
+  }
+
   // 初始化二级分类
   twoNavInit(appendBlock, list){
     this.setState({
@@ -82,6 +95,7 @@ class goodsTypeList extends Component {
       let res = await this.getGoods();
     })
   }
+
   render() {
     let { list, active, appendBlock, goodList, queryGoods } = this.state;
     let childTypeArrObject = list.length ? list[active] : {} ;
@@ -141,7 +155,7 @@ class goodsTypeList extends Component {
             }
           </div>
         </aside>
-        <FootNav />
+        {/* <FootNav /> */}
       </div>
     );
   }

@@ -22,12 +22,22 @@ class Mine extends Component {
     this.toChangePerInfo = this.toChangePerInfo.bind(this);
   }
   async componentDidMount() {//根据路由修改底部导航选中状态及title内容
+    this.props.commonState.handleFooterStatus(true);
     this.props.commonState.selectKey();
     if (localStorage.getItem('QR_TOKEN')) {
       //请求个人信息
       await this.personInfoInit();
     }
   }
+
+  componentDidUpdate() {
+    this.props.commonState.handleFooterStatus(true);
+  }
+
+  componentWillUnmount() {
+    this.props.commonState.handleFooterStatus(false);
+  }
+
   async personInfoInit() {
     let res = await personInfo();
     if (res.data.code === 0) {//成功
@@ -115,7 +125,7 @@ class Mine extends Component {
             </div>
           </div>
         </div>
-        <FootNav />
+        {/* <FootNav /> */}
       </div>
     );
   }

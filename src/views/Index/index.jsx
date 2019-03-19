@@ -23,6 +23,7 @@ class Index extends Component {
   }
 
   async componentDidMount() {//根据路由修改底部导航选中状态及title内容
+    this.props.commonState.handleFooterStatus(true);
     this.props.commonState.selectKey();
     let url = window.location.href.split('#')[0];
     let res = await getWechatSign({url});
@@ -34,6 +35,10 @@ class Index extends Component {
         banners: banners.data.list
       })
     }
+  }
+
+  componentDidUpdate() {
+    this.props.commonState.handleFooterStatus(true);
   }
 
   wechatShareInit(params, url) {
@@ -135,6 +140,10 @@ class Index extends Component {
     });
   }
 
+  componentWillUnmount() {
+    this.props.commonState.handleFooterStatus(false);
+  }
+
   render() {
     return (
       <div>
@@ -152,7 +161,7 @@ class Index extends Component {
           <AdsCase titleName="秒杀活动" data={[1]} />
           {/* <DecorationCase titleName="经典装修" /> */}
           <DecorationCase titleName="设计美学" />
-          <FootNav />
+          {/* <FootNav /> */}
         </div>
       </div>
     );

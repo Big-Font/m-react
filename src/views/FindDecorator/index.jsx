@@ -16,6 +16,9 @@ const options = [{
   value: '2',
   label: '维修',
 }];
+
+@inject('commonState')
+@observer
 @withRouter
 //把需要的全局状态inject过来
 @inject('commonState')
@@ -66,8 +69,18 @@ class FindDecoratorF extends Component {
   handleChange = ({ fileList }) => this.setState({ fileList })
 
   componentDidMount() {//根据路由修改底部导航选中状态及title内容
+    this.props.commonState.handleFooterStatus(true);
     this.props.commonState.selectKey();
   }
+
+  componentDidUpdate() {
+    this.props.commonState.handleFooterStatus(true);
+  }
+
+  componentWillUnmount() {
+    this.props.commonState.handleFooterStatus(false);
+  }
+
   onChange(value) {
     this.setState({
       findDType: value[0],

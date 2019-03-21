@@ -7,12 +7,19 @@
    ====================================================== */
 
 import { observable, computed, action, autorun } from 'mobx';
+import { wxShare } from '@/utils/wxShare';
+import { HEADER_TITLE_MAP } from '@/config/headerTitle';
 
 class CommonState {
     @observable headerTitle = '首页';
     @observable showHeader = false;
     @observable showFooter = false;
     @observable keyNum = 0;
+    @observable wxShareInfo = {
+      title: '晴睿装饰',
+      desc: '用科技让装修更简单',
+      imgUrl: 'https://qingruiserver.wangshen.top/images/spikeList/85c282803fad11e998829db7f28b0a3816.png'
+    }
     @computed get getHeaderTitleFromStore() {
         return this.headerTitle;
     }
@@ -38,31 +45,30 @@ class CommonState {
         let pathNameRouter = window.location.pathname;
         this.updateRouterKey(pathNameRouter);
     }
+    /*
+    *   微信分享
+    */
+    @action wxShareInit() {
+      wxShare(this.wxShareInfo);
+    }
+    @action handleWxShareInfo(info) {
+      for(let name in info) {
+        this.wxShareInfo[name] = info[name];
+      }
+    }
     @action updateRouterKey = (key) => {
-        switch (key) {
-            case "/findDecorator":
-                this.keyNum = 2;
-                this.headerTitle = "找师傅"
-                break;
-            case "/":
-                this.keyNum = 0;
-                this.headerTitle = "首页"
-                break;
-            case "/decorationCases":
-                this.keyNum = 1;
-                this.headerTitle = "装修案例"
-                break;
-            case "/mine":
-                this.keyNum = 3;
-                this.headerTitle = "我的"
-                break;
-            case "/mine/changePersonInfo":
-                this.keyNum = 3;
-                this.headerTitle = "修改用户信息"
-                break;
-            default:
-                this.keyNum = 0;
-                this.barName = "首页"
+        if(HEADER_TITLE_MAP[key]) {
+          this.headerTitle = HEADER_TITLE_MAP[key];
+        }else {
+          if(key.match(/^\/casesDetail/)){
+            this.headerTitle = '装修案例详情';
+          }else if(key.match(/^\/spikeDetail/)){
+            this.headerTitle = '秒杀活动详情';
+          }else if(key.match(/^\/goodDetail/)){
+            this.headerTitle = '商品详情';
+          }else {
+            this.headerTitle = '晴睿装饰';
+          }
         }
     }
 }

@@ -6,23 +6,17 @@ import AuthRouter from '@/components/AuthRouter';
 import RouterGuard from '@/components/RouterGuard'
 import AnimatedRouter from 'react-animated-router'; //导入我们的的AnimatedRouter组件
 import { inject, observer } from 'mobx-react';
-import routes from './routerConfig';
+import routes from './routes';
 
-// const DecoratorsList = Loadable({
-//   loader: () => import(/* webpackChunkName: "DecoratorsList" */ '@/views/DecoratorsList'),
-//   loading: Loading,
-//   delay: 300
-// });
-
-//引进全局状态管理
-//把需要的全局状态inject过来
 const renderRoutesMap = (routes) => (
   routes.map((route, index) => {
+    console.log(route.component)
       return (
           <Route key={index} path={route.path}  render={props => (
               <RouterGuard {...route} {...props} />
           )}
           />
+          // <Route key={index} path={route.path}  component={route.component} />
       )
   })
 )

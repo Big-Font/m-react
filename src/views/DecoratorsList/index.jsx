@@ -13,6 +13,7 @@ class DecoratorsList extends Component {
   }
 
   componentDidMount() {//根据路由修改底部导航选中状态及title内容
+    console.log(`页面钩子执行了`)
     this.props.commonState.handleFooterStatus(true);
     this.props.commonState.selectKey();
   }

@@ -92,6 +92,13 @@ export default class Routers extends Component {
             // 显示 header
             this.props.commonState.handleHeaderStatus(true);
         },600);
+        console.log('componentWillUpdate之慈宁宫')
+    }
+
+    componentWillUpdate() {
+      console.log(`路由钩子执行了`)
+      this.props.commonState.selectKey();
+      this.props.commonState.wxShareInit()
     }
 
     render () {

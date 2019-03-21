@@ -24,13 +24,12 @@ class RouterGuard extends Component {
     render() {
         let { component, routes = [] } = this.props
         console.log('准备渲染compoent前', this.props)
-        const LoadableComponent = Loadable({
-          loader: () => import(`${component}`),
+        let LoadableComponent = Loadable({
+          loader: () => import(`./../../${component}`),
+
           loading: Loading,
           delay: 300
         });
-
-        console.log(LoadableComponent)
         // const LoadableComponent = Loadable({
         //     loader: () => import(`${component}`),
         //     loading: Loading,
@@ -38,8 +37,9 @@ class RouterGuard extends Component {
         // })
         return (
             <div>
+                {/* <Component {...this.props} /> */}
                 <LoadableComponent {...this.props} />
-                {renderRoutesMap(routes)}
+                {/* {renderRoutesMap(routes)} */}
             </div>
 
         )

@@ -14,3 +14,15 @@ export function getUrlQuery(str) {
   }
   return query;
 }
+
+/*
+*   判断是否是微信浏览器 微信环境返回 true
+*/
+export function isWeiXin(){
+  var ua = window.navigator.userAgent.toLowerCase();
+  if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+      return true;
+  }else{
+      return false;
+  }
+}

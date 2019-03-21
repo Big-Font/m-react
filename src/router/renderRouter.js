@@ -1,7 +1,8 @@
 //renderRoutes.js
 import React, { Component } from 'react';
-import { Route, HashRouter, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import renderRoutesMap from './renderRoutesMap'
+import FootNav from '@/components/FootNav'
 /*
  * renderRoutes 渲染路由
  * @param  {array}      routes              路由列表
@@ -10,9 +11,12 @@ import renderRoutesMap from './renderRoutesMap'
  */
 const renderRoutes = ({ routes, extraProps = {}, switchProps = {} }) => (
     <BrowserRouter>
+      <React.Fragment>
         <Switch {...switchProps}>
             {renderRoutesMap(routes)}
         </Switch>
+        <FootNav />
+      </React.Fragment>
     </BrowserRouter>
 )
 

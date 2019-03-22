@@ -1,0 +1,22 @@
+.no-data{
+  padding-top: 1.63rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  img {
+    width: 4.94rem;
+    height: 2.54rem;
+    margin-bottom: 0.74rem;
+  }
+  p{
+    font-size: 0.3rem;
+    color: #9c9c9c;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+}

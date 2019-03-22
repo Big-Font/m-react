@@ -5,53 +5,60 @@
     首页装修案例---可作为公共组件
    ====================================================== */
 import React, { Component } from 'react';
-import './index.scss';
-import DecoratonsList from './decorationCaseList';
+import { NavLink } from 'react-router-dom';
+import DecoratonsCell from './decorationCaseCell';
 import { decoration } from '@/apis/modules/decoration';
 import IconFont from '@/components/Iconfont';
+import './index.scss';
+
 class DecorationCase extends Component {
   constructor(props) {
     super();
     this.state = {
       decorationList: [],
     }
-    this.geDecorationListInit = this.geDecorationListInit.bind(this);
   }
-  async geDecorationListInit() {
-    let res = await decoration();
-    console.log(res.data)
-    this.setState({
-      decorationList: res.data.list
-    })
-  }
-  componentDidMount() {
-    this.geDecorationListInit()
-  }
-  componentWillUnmount() {
 
+  async componentDidMount() {
+    let res = await decoration();
+    if(res.data.code === 0) {
+      this.setState({
+        decorationList: res.data.list
+      })
+    }
   }
+
   render() {
     const { titleName } = this.props;
     const { decorationList } = this.state;
-    let imSrc = decorationList.length > 0 ? 
-      decorationList[0].caselist_img : "";
-    let title = decorationList.length > 0 ? decorationList[0].caselist_title : "";
+    let firstCell = {}, caseList = [];
+    if(decorationList.length) {
+      firstCell= decorationList[0];
+      caseList = decorationList.slice(1);
+    }
     return (
       <div className='decorationCase'>
         <div className="decorationCase-head clearfix">
           <i className="fl decorationCase-head-i"></i>
           <h4 className="fl">{titleName}</h4>
-          <div className="fr clearfix">
-            <a href="javascript:;" className="fl">查看更多</a>
-            <IconFont type={"icon-more"} style={{float:"left"}} />
+        </div>
+        <NavLink to={`/casesDetail/${firstCell.caselist_id}`}>
+          <div className="decorationCase-ad">
+            <img src={firstCell.caselist_img} alt="" />
+            {firstCell.caselist_title}
           </div>
-
-        </div>
-        <div className="decorationCase-ad">
-          <img src={imSrc} alt="" />
-          {title}
-        </div>
-        <DecoratonsList data={decorationList} />
+        </NavLink>
+        {
+          caseList.length
+          ?
+          caseList.map((item, index) => {
+            return (
+              <DecoratonsCell item={item} key={item.caselist_id} />
+            )
+          })
+          :
+          null
+        }
       </div>
     );
   }

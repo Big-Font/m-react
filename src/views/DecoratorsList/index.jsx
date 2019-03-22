@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import DecorationCase from '@/components/DecorationCase';
-import AdsCase from '@/components/AdsCase';
-import FootNav from '@/components/FootNav';
 import './index.scss'
 
 @inject('commonState')
@@ -12,10 +10,8 @@ class DecoratorsList extends Component {
     super();
   }
 
-  componentDidMount() {//根据路由修改底部导航选中状态及title内容
-    console.log(`页面钩子执行了`)
+  componentDidMount() {
     this.props.commonState.handleFooterStatus(true);
-    this.props.commonState.selectKey();
   }
 
   componentDidUpdate() {
@@ -29,9 +25,7 @@ class DecoratorsList extends Component {
   render() {
     return (
       <div className="decoration">
-        <AdsCase titleName="秒杀活动" data={[1]} />
         <DecorationCase titleName="装修案例"  />
-        {/* <FootNav /> */}
       </div>
     );
   }

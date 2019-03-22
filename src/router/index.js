@@ -111,7 +111,7 @@ export default class Routers extends Component {
                     <AnimatedRouter>
                         {/* 首页 */}
                         <Route exact path="/" component={Index} />
-                        {/* 装修案例 */}
+                        {/* 装修案例列表 */}
                         <Route exact path="/decorationCases" component={DecoratorsList} />
                         {/* 装修案例详情 */}
                         <Route path="/casesDetail/:id" component={CasesDetail} />

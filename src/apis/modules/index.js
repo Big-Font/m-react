@@ -8,3 +8,11 @@ export function getBanner() {
     method: 'get'
   })
 }
+
+// 获取首页信息
+export function getIndexAPI() {
+  return request({
+    url: '/v1/getIndex',
+    method: 'post'
+  })
+}

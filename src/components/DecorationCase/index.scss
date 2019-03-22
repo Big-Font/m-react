@@ -34,30 +34,41 @@
             width: 100%;
         }
     }
-    .decorationCase-list{
-        li{
-            padding:0.5rem 0;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            position: relative;
-            .decorationCase-list-casePic{
-                width: 3.15rem;
-            }
-            .decorationCase-list-title{
-                padding-top: 0.07rem;
-                height: 100%;
-                font:bold 0.336rem/0.42rem "Microsoft Yahei";
-                width:3.22rem;
-            }
-            .scanNum{
-                width: 100%;
-                position: absolute;
-                left: 0;
-                bottom: 0.3rem;
-                font:normal 0.21rem/0.42rem "Microsoft Yahei";
-                b{
-                    margin: 0 0.1rem;
-                }
-            }
-        }
+}
+// 装修案例cell
+.decorationCase-cell{
+  margin: 0.3rem 0;
+  padding: 0.42rem 0;
+  width: 100%;
+  border-top: 2px solid #f5f5f5;
+  border-bottom: 2px solid #f5f5f5;
+  display: block;
+  // box-shadow: #e8e8e8 0 0.04rem 0.06rem 0;
+  // box-shadow: 0 0.04rem 0 #e8e8e8, 0 -0.04rem 0 #e8e8e8;
+  .decorationCase-cell-top{
+    display: flex;
+    justify-content: space-between;
+    height: 2.5rem;
+    .decorationCase-cell-info{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      >p{
+        width: 2.68rem;
+        line-height: 0.45rem;
+        font-size: 0.38rem;
+        color: #2b2b2b;
+      }
+      >div{
+
+      }
     }
+    >img{
+      width: 3.77rem;
+      height: 2.5rem;
+    }
+  }
+  .decorationCase-cell-info{
+
+  }
 }

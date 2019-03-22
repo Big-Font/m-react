@@ -8,14 +8,11 @@ import {inject,observer} from 'mobx-react';
 @inject('commonState')
 @observer class HeadNav extends Component {
     constructor(props) {
-        super();
-        this.forBack = this.forBack.bind(this);
+      super();
+      this.forBack = this.forBack.bind(this);
     }
     forBack() {
-        // console.log(this.props)
-        this.props.history.go(-1);
-        //修改title 名字
-        // await this.props.commonState.selectKey();
+      this.props.history.length > 1 ? this.props.history.go(-1) : this.props.history.push('/');
     }
     render() {
         const {commonState} = this.props;
@@ -24,7 +21,6 @@ import {inject,observer} from 'mobx-react';
             <div className="header-view">
                 <div className="header clearfix">
                     <IconFont type='icon-guifandaohanglanfanhui' onClick={this.forBack} className="fl back" />
-                    {/* <i className="fl" onClick={this.forBack}></i> */}
                     <h3 className="fl">{header}</h3>
                 </div>
                 <div className="stance"></div>

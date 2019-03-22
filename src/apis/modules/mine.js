@@ -1,5 +1,5 @@
 import request from '../request'
-import { func } from 'prop-types';
+
 //个人信息
 function personInfo() {
   return request({

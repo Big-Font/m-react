@@ -1,5 +1,4 @@
 import request from '../request'
-import qs from 'qs'
 
 // 秒杀活动列表接口
 export function spikeActiveList(data) {

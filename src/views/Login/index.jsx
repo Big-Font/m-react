@@ -8,7 +8,6 @@ import { inject, observer } from 'mobx-react';
 import { login, getPicCode } from '@/apis/modules/login';
 import { baseUrl } from '@/config/env';
 import {countryNameArr,regAndLoginErrorMes,RegExpArr} from '@/config/regAndLoginData';
-import { getUrlQuery } from '@/utils';
 const { Option } = Select;
 @withRouter
 //引进全局状态管理

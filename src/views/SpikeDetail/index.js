@@ -8,10 +8,13 @@ require('./index.scss');
 @withRouter
 class SpikeDetail extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       id: props.match.params.id,
-      ActiveStatus: '未开始',
+      ActiveStatus: {
+        name: '',
+        class: ''
+      },
       resInfo: {
         startTime: '',
         endTime: ''
@@ -23,13 +26,17 @@ class SpikeDetail extends Component {
     }
 
     this.handleShow = this.handleShow.bind(this);
+    this.queryActiveType = this.queryActiveType.bind(this);
   }
 
   async componentWillMount() {
     let res = await querySpikeDetail({id: this.state.id});
     if(res.data.code === 0) {
+      let resInfo = res.data.data;
+      let ActiveStatus = this.queryActiveType(resInfo.type);
       this.setState({
-        resInfo: res.data.data
+        resInfo,
+        ActiveStatus
       })
 
     }
@@ -43,13 +50,27 @@ class SpikeDetail extends Component {
     })
   }
 
+  // 活动状态  1-进行中， 2-已结束, 3-未开始
+  queryActiveType(type) {
+    switch(type){
+      case '1':
+        return {name: '进行中', class: 'ing'};
+      case '2':
+        return {name: '已结束', class: 'end'};
+      case '3':
+        return {name: '未开始', class: 'unopen'};
+      default:
+        return '';
+    }
+  }
+
   render() {
-    let info = this.state.resInfo;
+    let {resInfo: info, ActiveStatus} = this.state;
     return (
       <div className="spike-detail">
         <div className="top-img">
           <img className="good-img" src={info.img} alt=""/>
-          <div>{this.state.ActiveStatus}</div>
+          <div className={ActiveStatus.class}>{ActiveStatus.name}</div>
         </div>
         {/* 秒杀信息 */}
         <div className="spilk-info">
@@ -77,7 +98,7 @@ class SpikeDetail extends Component {
                       <div key={index}>
                         <nav onClick={ () => {this.handleShow(index)}}>
                           <h3>{item.name}</h3>
-                          <IconFont type={item.status ? 'icon-jiantou-copy-copy-copy' : 'icon-jiantou-copy-copy'} />
+                          <IconFont className="des-info-icon" type={item.status ? 'icon-jiantou-copy-copy-copy' : 'icon-jiantou-copy-copy'} />
                         </nav>
                         <div className={item.status ? '' : 'un-look'}>&nbsp;&nbsp;&nbsp;&nbsp;{info[item.data]}</div>
                       </div>

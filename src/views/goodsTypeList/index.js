@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
-import FootNav from '@/components/FootNav';
 import { getGoodsTypeListAPI, getGoodsAPI } from '@/apis/modules/goods';
 require('./index.scss')
 
@@ -52,7 +51,7 @@ class goodsTypeList extends Component {
       list,
       queryGoods: {...this.state.queryGoods, typeId: list.length ? (list[0].children && list[0].children.length ? list[0].children[0].value : list[0].value) : 0}
     }, async () => {
-      let res = await this.getGoods();
+      await this.getGoods();
     })
   }
   // 请求商品列表
@@ -84,7 +83,7 @@ class goodsTypeList extends Component {
       appendBlock,
       queryGoods: {...this.state.queryGoods, typeId}
     }, async () => {
-      let res = await this.getGoods();
+      await this.getGoods();
     })
   }
   // 点击二级类别 重新筛选产品
@@ -92,7 +91,7 @@ class goodsTypeList extends Component {
     this.setState({
       queryGoods: {...this.state.queryGoods, typeId: item.value}
     }, async () => {
-      let res = await this.getGoods();
+      await this.getGoods();
     })
   }
 
@@ -155,7 +154,6 @@ class goodsTypeList extends Component {
             }
           </div>
         </aside>
-        {/* <FootNav /> */}
       </div>
     );
   }

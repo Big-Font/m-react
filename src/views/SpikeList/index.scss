@@ -17,21 +17,22 @@
 // 秒杀活动列表样式
 .spike-item{
   width: 92%;
-  margin: 0.3rem auto 0;
+  margin: 0.2rem auto;
   position: relative;
   border-radius: 0.15rem;
   box-shadow: #e8e8e8 0 0.04rem 0.06rem 0;
   // 状态类名
   .list-type{
-    width: 1.12rem;
+    width: 1.1rem;
     line-height: 0.45rem;
+    height: 0.45rem;
     border-radius: 0.45rem 0 0 0.45rem;
     color: #fff;
     position: absolute;
     top: 0.3rem;
     right: 0;
     padding-left: 0.2rem;
-    font-size: 0.2rem;
+    font-size: 0.26rem;
   }
   .ing{
     background: $blue;

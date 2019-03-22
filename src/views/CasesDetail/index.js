@@ -25,7 +25,6 @@ class CasesDetail extends Component {
 
   render() {
     let resInfo = this.state.resInfo;
-    let fontStyle = {fontSize: '0.3rem', color: '#5e5346', marginRight: '0.1rem'}
     return (
       <div className="cases-detail">
         {/* 头部图片+作者 */}

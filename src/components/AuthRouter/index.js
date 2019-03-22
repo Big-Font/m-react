@@ -5,7 +5,7 @@
     this.props.info 为跳转页面提示的内容，默认为 '为了更好的提供服务，请先登录'
    ====================================================== */
 import React, { Component } from 'react';
-import { withRouter, Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { message } from 'antd';
 
 class AuthRouter extends Component {

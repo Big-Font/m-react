@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import IconFont from '@/components/Iconfont';
 import './index.scss'
 
 class DecoratonsList extends Component {

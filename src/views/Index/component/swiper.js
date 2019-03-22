@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Carousel, WingBlank } from 'antd-mobile';
+import { Carousel } from 'antd-mobile';
 
 @withRouter
 class Swiper extends Component {
@@ -23,6 +23,7 @@ class Swiper extends Component {
         break;
       case '2':
         this.props.history.push(`/spikeDetail/${item.infoId}`);
+        break;
       default:
         console.log(`banner type err`)
     }

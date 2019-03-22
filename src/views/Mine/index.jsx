@@ -5,7 +5,6 @@ import { inject, observer } from 'mobx-react';
 import minePic from '@/images/mine/headPic.png'
 import { personInfo, } from '@/apis/modules/mine';
 import IconFont from '@/components/Iconfont';
-import FootNav from '@/components/FootNav';
 import {  message } from 'antd';
 
 //把需要的全局状态inject过来
@@ -125,7 +124,6 @@ class Mine extends Component {
             </div>
           </div>
         </div>
-        {/* <FootNav /> */}
       </div>
     );
   }

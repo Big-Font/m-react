@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { SegmentedControl, WingBlank, PullToRefresh } from 'antd-mobile';
 import { spikeActiveList } from '@/apis/modules/spikes';
 import SpikeCell from './SpikeCell';
@@ -44,7 +43,7 @@ class SpikeList extends Component {
     this.setState({ refreshing: true });
     if(this.query.page < this.total_page) {
       this.query.page += 1;
-      let res = await this.init('getMore');
+      await this.init('getMore');
       this.setState({
         refreshing: false
       })
@@ -84,7 +83,7 @@ class SpikeList extends Component {
           damping={60}
           ref={el => this.ptr = el}
           style={{
-            height: this.state.height,
+            height: this.state.height + 20,
             overflow: 'auto',
           }}
           indicator='上拉可以刷新'
@@ -100,7 +99,7 @@ class SpikeList extends Component {
             })
           }
         </PullToRefresh>
-        <div className="blok-footer"></div>
+        {/* <div className="blok-footer"></div> */}
       </WingBlank>
     );
   }

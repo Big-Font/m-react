@@ -1,5 +1,4 @@
 import request from '../baseReq'
-import qs from 'qs'
 
 // 获取banner接口
 export function getWechatSign(data) {

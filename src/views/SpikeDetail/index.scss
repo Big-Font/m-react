@@ -10,11 +10,22 @@
       position: absolute;
       top: 0.2rem;
       right: 0;
-      background: #fff;
-      color: $blue;
-      padding:0 0.6rem 0 0.26rem;
+      width: 1.4rem;
+      padding-left: 0.3rem;
       line-height: 0.52rem;
-      border-radius: 0.26rem 0 0 0.26rem;
+      height: 0.52rem;
+      border-radius: 0.52rem 0 0 0.52rem;
+      color: #fff;
+      font-size: 0.3rem;
+    }
+    .ing{
+      background: $blue;
+    }
+    .end{
+      background: #8b8b8b;
+    }
+    .unopen{
+      background: $origin;
     }
   }
   .spilk-info{
@@ -24,7 +35,7 @@
     margin: 0.4rem auto 0.3rem;
     padding-bottom: 0.2rem;
     >h1{
-      font-size: 0.3rem;
+      font-size: 0.34rem;
       line-height: 0.8rem;
       color: #383838;
       text-align: center;
@@ -84,8 +95,11 @@
         margin: 0 auto;
         h3{
           color: #383838;
-          font-size: 0.24rem;
+          font-size: 0.3rem;
           line-height: 0.6rem;
+        }
+        .des-info-icon{
+          font-size: 0.3rem;
         }
       }
       >div{
@@ -93,7 +107,8 @@
         width: 96%;
         margin: 0 auto;
         padding: 0 0.2rem;
-        font-size: 0.2rem;
+        font-size: 0.3rem;
+        line-height: 0.56rem;
         color: #888888;
       }
     }

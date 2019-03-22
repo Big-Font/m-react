@@ -1,5 +1,4 @@
 import request from '../request'
-import qs from 'qs'
 
 // 获取装修案例接口
 export function decoration(data) {

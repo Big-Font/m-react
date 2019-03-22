@@ -7,7 +7,6 @@
    import React, { Component } from 'react';
    import { NavLink } from 'react-router-dom'
    import {simbleToolArr} from '@/config/homeBanner';
-   import IconFont from '@/components/Iconfont';
    import '../index.scss';
 
    class SimbleTool extends Component {

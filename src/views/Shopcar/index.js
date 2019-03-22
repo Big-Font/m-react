@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import ShopCarCell from './shapCarCell';
-import { queryShopcarListAPI } from '@/apis/modules/goods';
 require('./index.scss');
 
 @inject('userState')

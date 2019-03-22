@@ -1,5 +1,4 @@
 import request from '../request'
-import qs from 'qs'
 
 // 获取验证码接口
 function getEmailCode(data) {

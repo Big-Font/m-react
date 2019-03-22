@@ -47,6 +47,8 @@ service.interceptors.response.use(response => {
         localStorage.removeItem('QR_TOKEN');
         window.location.reload();
         break;
+      default:
+        null;
     }
   }
   return Promise.reject(error);

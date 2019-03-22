@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, HashRouter, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import AnimatedRouter from 'react-animated-router'; //导入我们的的AnimatedRouter组件
 import 'react-animated-router/animate.css'; //导入默认的切换动画样式，如果需要其它切换样式，可以导入自己的动画样式定义文件
@@ -19,8 +19,6 @@ import Shopcar from '@/views/Shopcar';
 import Page404 from '@/views/Page404';
 import HeadNav from '@/components/HeadNav'
 import FootNav from '@/components/FootNav'
-import Login from '@/views/Login'
-import Register from '@/views/Register'
 import FindDecorator from '@/views/FindDecorator'
 import GetWechatUserInfo from '@/views/GetWechatUserInfo'
 import { inject, observer } from 'mobx-react';

@@ -28,8 +28,6 @@ class FootNavList extends Component {
   }
 
   render() {
-    const {commonState} = this.props;
-    let num = commonState._keyNum;
     return (
       <React.Fragment>
           {

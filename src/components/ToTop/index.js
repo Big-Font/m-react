@@ -13,7 +13,7 @@ class ToTop extends Component {
     this.state = {
       changeLite: false
     }
-    let scrollToptimer = null;
+    this.scrollToptimer = null;
   }
 
   componentDidMount() {

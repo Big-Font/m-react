@@ -6,6 +6,7 @@ import DecoratonsCell from '@/components/DecorationCase/decorationCaseCell';
 // import DecorationCase from '@/components/DecorationCase';
 import SimbleTool from './component/simbleTool';
 import AdsCase from '@/components/AdsCase';
+import ToTop from '@/components/ToTop';
 import { getIndexAPI } from '@/apis/modules';
 import './index.scss'
 
@@ -71,6 +72,7 @@ class Index extends Component {
             null
           }
         </div>
+        <ToTop />
       </div>
     );
   }

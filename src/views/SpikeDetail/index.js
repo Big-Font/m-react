@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import IconFont from '@/components/Iconfont';
 import { querySpikeDetail } from '@/apis/modules/spikes';
 import { date } from '@/utils/filters';
+import ToTop from '@/components/ToTop';
 require('./index.scss');
 
 @withRouter
@@ -119,6 +120,7 @@ class SpikeDetail extends Component {
         </div>
         {/* 商品活动详情 */}
         <div className="content" dangerouslySetInnerHTML={{__html: info.goods}}></div>
+        <ToTop />
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { SegmentedControl, WingBlank, PullToRefresh } from 'antd-mobile';
 import { spikeActiveList } from '@/apis/modules/spikes';
 import SpikeCell from './SpikeCell';
+import ToTop from '@/components/ToTop';
 import './index.scss';
 
 class SpikeList extends Component {
@@ -99,7 +100,7 @@ class SpikeList extends Component {
             })
           }
         </PullToRefresh>
-        {/* <div className="blok-footer"></div> */}
+        <ToTop />
       </WingBlank>
     );
   }

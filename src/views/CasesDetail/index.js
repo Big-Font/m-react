@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import IconFont from '@/components/Iconfont';
 import { caseDetail } from '@/apis/modules/decoration';
+import ToTop from '@/components/ToTop';
 require('./index.scss');
 
 @withRouter
@@ -69,6 +70,7 @@ class CasesDetail extends Component {
         </div>
         {/* 内容 */}
         <div className="content" dangerouslySetInnerHTML={{__html: resInfo.content}}></div>
+        <ToTop />
       </div>
     );
   }

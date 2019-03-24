@@ -79,20 +79,24 @@ export default class Routers extends Component {
         this.state = {
           showFootNav: true
         }
+        this.timer = null;
     }
 
     componentDidMount(){
+        clearTimeout(this.timer)
         // 去除splash
         let el=document.getElementById('splash'); //html标签
         el.className='loaded';
-        setTimeout(()=>{
+        this.timer = setTimeout(()=>{
             if(!!el) el.remove();
             // 显示 header
             this.props.commonState.handleHeaderStatus(true);
         },600);
         console.log('componentWillUpdate之慈宁宫')
     }
-
+    componentWillUnmount() {
+      clearTimeout(this.timer)
+    }
     componentWillUpdate() {
       console.log(`路由钩子执行了`)
       this.props.commonState.selectKey();

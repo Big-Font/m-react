@@ -68,6 +68,11 @@ const NewRegister = Loadable({
   loading: Loading,
   delay: 300
 });
+const NewFindWorker = Loadable({
+  loader: () => import(/* webpackChunkName: "NewRegister" */ '@/views/FindDecorator/newIndex'),
+  loading: Loading,
+  delay: 300
+});
 
 //引进全局状态管理
 //把需要的全局状态inject过来
@@ -143,6 +148,8 @@ export default class Routers extends Component {
                         {/* <Route exact path="/newlogin" component={NewLogin} /> */}
                         {/* 测试获取用户信息 */}
                         <Route exact path="/getWechatUserInfo" component={GetWechatUserInfo} />
+                        {/* 新版找师傅 */}
+                        <Route exact path="/newFindWorker" component={NewFindWorker} />
                         {/* 404页面 */}
                         <Route component={Page404} />
                     </AnimatedRouter>

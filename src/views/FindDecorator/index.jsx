@@ -48,14 +48,10 @@ class FindDecoratorF extends Component {
 }
   async findDecoratorInit(data) {
     let res = await findDecorator(data);
-    if (res.data.code === 0) {//成功
+    if (res.data.code === 0) {
       let detail = res.data.msg;
       message.success(detail, 5);
     }
-    // else if (res.data.code < 0) {//网络错误怎么显示
-    //   let detail = res.data.msg;
-    //   message.error(detail, 5);
-    // }
   }
   handleCancel = () => this.setState({ previewVisible: false })
 

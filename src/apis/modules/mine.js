@@ -1,4 +1,5 @@
 import request from '../request'
+import qs from 'qs'
 
 //个人信息
 function personInfo() {
@@ -8,13 +9,14 @@ function personInfo() {
   })
 }
 //上传图片
-function uploadAjax () {
+function uploadAjax (data, path) {
   return request({
-    url: '/upload',
+    url: `/upload/${data}`,
     method: 'post',
     headers:{
       "Authorization":"Bearer " + localStorage.QR_TOKEN,
     },
+    data: qs.stringify(data)
   })
 }
 //修改个人信息

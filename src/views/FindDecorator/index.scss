@@ -23,10 +23,6 @@
             word-wrap: break-word;
             color: #000;
         }
-        .findDecorator-form-btn{
-            width: 100%;
-            background: #41c95b;
-        }
         .newMargin{
             margin-bottom: 10px;
         }
@@ -84,5 +80,46 @@
     -webkit-transform: scaleY(0.5);
     -ms-transform: scaleY(0.5);
     transform: scaleY(0.5);
+  }
+  .upload{
+    width: 100%;
+    padding: 15px;
+    height:140px;
+  }
+  .findDecorator-form-btn{
+    width: calc(100% - 30px);
+    margin:0 15px;
+    background: #1890ff;
+    font-size: 0.28rem
+  }
+}
+
+//师傅list
+.decoratorList{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  .decorator-list{
+    width: 100%;
+    line-height: 1.6rem;
+    div{
+      padding-left: 8px;
+      span{
+        margin-left: 8px;
+        font-size: 0.28rem
+      }
+    }
+    .decorator-delIcon{
+      padding-right: 8px;
+      font-size: 1rem;
+      margin-top: 0.3rem;
+
+    }
+  }
+  .decorator-nodata{
+    line-height: 1rem;
+    padding-left: 15px;
+    font-size: 0.3rem
   }
 }

@@ -36,7 +36,6 @@ class FindDecoratorF extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-
     this.props.form.validateFields((err, values) => {
         if (!err) {//登录
           console.log(this.state.fileList[0].response.fileList)

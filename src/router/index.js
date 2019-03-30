@@ -19,7 +19,8 @@ import Shopcar from '@/views/Shopcar';
 import Page404 from '@/views/Page404';
 import HeadNav from '@/components/HeadNav'
 import FootNav from '@/components/FootNav'
-import FindDecorator from '@/views/FindDecorator'
+import FindDecorator from '@/views/FindDecorator/newIndex'
+import DecoratorLists from '@/views/FindDecorator/decoratorLists'
 import GetWechatUserInfo from '@/views/GetWechatUserInfo'
 import { inject, observer } from 'mobx-react';
 
@@ -129,10 +130,12 @@ export default class Routers extends Component {
                         {/* 我的 */}
                         <Route exact path="/mine" component={Mine} />
                         {/* 修改个人信息 */}
-                        <Route exact path="/mine/changePersonInfo" component={ChangePersonInfo} />
+                        <AuthRouter exact path="/mine/changePersonInfo" component={ChangePersonInfo} />
                         {/* 找师傅 --- 登录拦截 */}
                         {/* <Route exact path="/findDecorator" component={FindDecorator} /> */}
-                        <AuthRouter path="/findDecorator" component={FindDecorator} />
+                        <AuthRouter exact path="/findDecorator" component={FindDecorator} />
+                        {/* 师傅list --- 登录拦截 李雪魁*/}
+                        <AuthRouter  path="/findDecorator/decoratorlist" component={DecoratorLists} />
                         {/* 商品分类列表 */}
                         <Route exact path="/goodsTypeList" component={GoodsTypeList} />
                         {/* <Route exact path={{pathname: '/goodsTypeList', state={title: '商品列表'}}} component={GoodsTypeList} /> */}

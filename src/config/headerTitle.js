@@ -6,6 +6,7 @@ export const HEADER_TITLE_MAP = {
   // '/spikeDetail': '秒杀活动详情',
   '/mine': '个人中心',
   '/mine/changePersonInfo': '修改个人信息',
+  '/findDecorator/decoratorlist': '师傅列表',//李雪魁
   '/findDecorator': '找师傅',
   // '/goodDetail': '商品详情',
   '/shopcar': '购物车',

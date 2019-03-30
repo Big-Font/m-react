@@ -7,5 +7,12 @@ function findDecorator(data) {
       method: 'post',
       data:data
     })
-  }
-export {findDecorator}
+}
+// 师傅list
+function decoratorlists() {
+  return request({
+    url: '/getUserFindWorkerList',
+    method: 'post',
+  })
+}
+export {findDecorator,decoratorlists}

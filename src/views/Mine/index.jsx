@@ -19,6 +19,7 @@ class Mine extends Component {
     this.goLogin = this.goLogin.bind(this);
     this.personInfoInit = this.personInfoInit.bind(this);
     this.toChangePerInfo = this.toChangePerInfo.bind(this);
+    this.toCecoratorList = this.toCecoratorList.bind(this);
   }
   async componentDidMount() {//根据路由修改底部导航选中状态及title内容
     this.props.commonState.handleFooterStatus(true);
@@ -47,11 +48,18 @@ class Mine extends Component {
     }
   }
   toChangePerInfo(){
-    if (!localStorage.getItem('QR_TOKEN')){
-      message.warn("用户未登录",5);
-      return;
-    }
+    // if (!localStorage.getItem('QR_TOKEN')){
+    //   message.warn("用户未登录",5);
+    //   return;
+    // }
     this.props.history.push('/mine/changePersonInfo');
+  }
+  toCecoratorList(){
+    // if (!localStorage.getItem('QR_TOKEN')){
+    //   message.warn("用户未登录",5);
+    //   return;
+    // }
+    this.props.history.push('/findDecorator/decoratorlist');
   }
   goLogin() {
     this.props.history.push('/login');
@@ -83,13 +91,17 @@ class Mine extends Component {
             <h4 className="fl">我的活动</h4>
             <IconFont type={"icon-more"} style={{ float: "right" }} />
           </div>
-          <div className="mineS-mid-myActivFirst clearfix">
+          <div className="mineS-mid-myActiv clearfix" onClick={this.toCecoratorList}>
+            <h4 className="fl">我的师傅</h4>
+            <IconFont type={"icon-more"} style={{ float: "right" }} />
+          </div>
+          {/* <div className="mineS-mid-myActivFirst clearfix">
             <div className="fl">
               <p>暂时未参加活动哦~</p>
               <p className="mineS-mid-myActivFirst-p">活动多多，优惠多多，点击右侧按钮查看活动。。。</p>
             </div>
             <input className="fr" type="button" value="点击查看" />
-          </div>
+          </div> */}
           <div className="mineS-mid-myActiv clearfix">
             <h4 className="fl">我的信息</h4>
             <input

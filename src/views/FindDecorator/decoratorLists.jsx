@@ -3,8 +3,9 @@ import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { decoratorlists } from '@/apis/modules/findDecorator';
 import IconFont from '@/components/Iconfont';
-import { List } from 'antd-mobile';
+import { Collapse,Icon  } from 'antd';
 import './index.scss'
+const Panel = Collapse.Panel;
 @inject('commonState')
 @observer
 @withRouter
@@ -15,49 +16,60 @@ class DecoratorLists extends Component {
         super();
         this.state = {
             decoratorList: [
-               
             ]
         }
-
+        this.decoratorlistInit = this.decoratorlistInit.bind(this);
+        this.customPanelStyle = {
+            background: '#f7f7f7',
+            borderRadius: 4,
+            marginBottom: 24,
+            overflow: 'hidden',
+        }
     }
-
-    async componentDidUpdate() {
+    async decoratorlistInit() {
         let res = await decoratorlists();
-        console.log(res)
+        if (res.data.code === 0) {//成功
+        this.setState({
+            decoratorList:res.data.list
+        })}
     }
-
+    async componentDidMount() {
+        if (localStorage.getItem('QR_TOKEN')) {
+            //请求个人信息
+            await this.decoratorlistInit();
+        }
+    }
     componentWillUnmount() {
 
     }
-
     render() {
         const { decoratorList } = this.state;
+        const {...rest } = this.props;
         return (
-            <ul className="decoratorList">
-                {
-                    decoratorList.length > 0 ?
-                    (decoratorList.map((item, ind) => {
-                        let state = item.state;
-                        let title = item.title;
-                        return (
-                            <List className="clearfix decorator-list" key={title}>
-                                <div className="clearfix fl">
-                                    <IconFont
-                                        type={state ? 'icon-iconfontroundcheck' : 'icon-jinggao'}
-                                        className="fl"
-                                        style={{ fontSize: '1rem', marginTop: "0.3rem", color: state ? "#1890ff" : "#f00" }}
-                                    />
-                                    <span className="fl">{title}</span>
-                                </div>
-                                <IconFont
-                                    type={'icon-shanchu'}
-                                    className="fr decorator-delIcon"
-                                />
-                            </List>
-                        )
-                    })) : <p className="decorator-nodata">( 暂未数据 )</p>
-                }
-            </ul>
+            <div className="decoratorList" >
+                <Collapse  >
+                    {
+                        decoratorList.length > 0 ?
+                            (
+                                decoratorList.map((item, ind) => {
+                                    let details = item.details;
+                                    let title = item.title;
+                                    let isOver = item.isOver
+                                    return(
+                                        <Panel 
+                                            header={title}
+                                            key={ind+""}
+                                            extra={isOver == 1 ? <p className="decorator-no">等待师傅联系</p> : <p className="decorator-yes">已有师傅联系</p>}
+                                            style={this.customPanelStyle}
+                                        >
+                                            <p >{details}</p>
+                                        </Panel>
+                                    )
+                                })
+                            ) : <p className="decorator-nodata">( 暂未数据 )</p>
+                    }
+                </Collapse>
+            </div>
         );
     }
 }

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import '../Login/index.css';
 import './index.scss';
 import {
-    Form, Input, Button, message, Upload, Icon, Modal
+    Form, Input, Button, message, Upload, Modal
 } from 'antd';
+import IconFont from '@/components/Iconfont';
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { changePersonSomeInfo, } from '@/apis/modules/mine';
@@ -141,7 +142,7 @@ class ChangePersonInfo extends Component {
                 >
                     {
                         imageU ? null : <div>
-                            <Icon type={loading ? 'loading' : 'plus'} />
+                            <IconFont type={loading ? 'icon-loading' : 'icon-zengjia'}/>
                             <div className="ant-upload-text">上传头像</div>
                         </div>
                     }

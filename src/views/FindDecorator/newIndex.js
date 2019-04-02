@@ -5,6 +5,9 @@ import { withRouter } from 'react-router-dom';
 import { baseUrl } from '@/config/env';
 import { findDecorator } from '@/apis/modules/findDecorator';
 import IconFont from '@/components/Iconfont';
+import * as Driver from 'driver.js'; // import driver.js
+import 'driver.js/dist/driver.min.css'; // import driver.js css
+import steps from './defineSteps';
 require('./index.scss');
 @withRouter
 class FindDecorator extends Component {
@@ -22,6 +25,38 @@ class FindDecorator extends Component {
     }
     this.findDecoratorInit = this.findDecoratorInit.bind(this);
   }
+
+
+  componentDidMount() {
+    setTimeout( () => {
+      let driver = new Driver({
+        className: 'scoped-class',        // className to wrap driver.js popover
+        animate: true,                    // Whether to animate or not
+        opacity: 0.75,                    // Background opacity (0 means only popovers and without overlay)
+        padding: 10,                      // Distance of element from around the edges
+        allowClose: false,                 // Whether the click on overlay should close or not
+        overlayClickNext: false,          // Whether the click on overlay should move next
+        doneBtnText: '完成',              // Text on the final button
+        closeBtnText: '关闭',            // Text on the close button for this step
+        stageBackground: '#ffffff',       // Background color for the staged behind highlighted element
+        nextBtnText: '下一步',              // Next button text for this step
+        prevBtnText: '上一步',          // Previous button text for this step
+        showButtons: true,               // Do not show control buttons in footer
+        keyboardControl: true,            // Allow controlling through keyboard (escape to close, arrow keys to move)
+        scrollIntoViewOptions: {},        // We use `scrollIntoView()` when possible, pass here the options for it if you want any
+        onHighlightStarted: (Element) => {}, // Called when element is about to be highlighted
+        onHighlighted: (Element) => {},      // Called when element is fully highlighted
+        onDeselected: (Element) => {},       // Called when element has been deselected
+        onReset: (Element) => {},            // Called when overlay is about to be cleared
+        onNext: (Element) => {},                    // Called when moving to next step on any step
+        onPrevious: (Element) => {},                // Called when moving to previous step on any step
+      })
+      driver.defineSteps(steps)
+      driver.start()
+    }, 1000)
+
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     //前端错误提示
@@ -107,8 +142,8 @@ class FindDecorator extends Component {
       </div>
     );
     return (
-      <div className="add-find-worker">
-        <List renderHeader={() => '标题'}>
+      <div className="add-find-worker step8">
+        <List class="step1" renderHeader={() => '标题'}>
           <InputItem
             className="input-item"
             clear
@@ -116,7 +151,7 @@ class FindDecorator extends Component {
             ref={el => this.inputRefBrefNeed = el}
           ></InputItem>
         </List>
-        <List renderHeader={() => '地址'}>
+        <List class="step2" renderHeader={() => '地址'}>
           <InputItem
             className="input-item"
             clear
@@ -124,7 +159,7 @@ class FindDecorator extends Component {
             ref={el => this.inputRefAdress = el}
           ></InputItem>
         </List>
-        <List renderHeader={() => '联系电话'}>
+        <List class="step3" renderHeader={() => '联系电话'}>
           <InputItem
             className="input-item"
             clear
@@ -132,7 +167,7 @@ class FindDecorator extends Component {
             ref={el => this.inputRefTel = el}
           ></InputItem>
         </List>
-        <List renderHeader={() => '描述'}>
+        <List class="step4" renderHeader={() => '描述'}>
           <TextareaItem
             placeholder="简要描述您需要安装或者维修的状况，方便我们分配与您联系上门服务的师傅的工种"
             data-seed="logId"
@@ -140,7 +175,7 @@ class FindDecorator extends Component {
             ref={el => this.customFocusInst = el}
           />
         </List>
-        <List>
+        <List  class="step5">
           <Picker
             data={this.state.typeList}
             value={this.state.typeChoose}
@@ -150,7 +185,7 @@ class FindDecorator extends Component {
             <List.Item arrow="horizontal">请选择类型</List.Item>
           </Picker>
         </List>
-        <List renderHeader={() => '上传图片'}>
+        <List  class="step6" renderHeader={() => '上传图片'}>
           <div className="upload">
             <Upload
               headers={{
@@ -169,7 +204,7 @@ class FindDecorator extends Component {
             </Modal>
           </div>
         </List>
-        <Button type="primary" className="findDecorator-form-btn" onClick={this.handleSubmit}>
+        <Button class="step7" type="primary" className="findDecorator-form-btn" onClick={this.handleSubmit}>
           提交
         </Button>
       </div>

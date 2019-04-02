@@ -143,7 +143,7 @@ class FindDecorator extends Component {
     );
     return (
       <div className="add-find-worker step8">
-        <List class="step1" renderHeader={() => '标题'}>
+        <List className="step1" renderHeader={() => '标题'}>
           <InputItem
             className="input-item"
             clear
@@ -151,7 +151,7 @@ class FindDecorator extends Component {
             ref={el => this.inputRefBrefNeed = el}
           ></InputItem>
         </List>
-        <List class="step2" renderHeader={() => '地址'}>
+        <List className="step2" renderHeader={() => '地址'}>
           <InputItem
             className="input-item"
             clear
@@ -159,7 +159,7 @@ class FindDecorator extends Component {
             ref={el => this.inputRefAdress = el}
           ></InputItem>
         </List>
-        <List class="step3" renderHeader={() => '联系电话'}>
+        <List className="step3" renderHeader={() => '联系电话'}>
           <InputItem
             className="input-item"
             clear
@@ -167,7 +167,7 @@ class FindDecorator extends Component {
             ref={el => this.inputRefTel = el}
           ></InputItem>
         </List>
-        <List class="step4" renderHeader={() => '描述'}>
+        <List className="step4" renderHeader={() => '描述'}>
           <TextareaItem
             placeholder="简要描述您需要安装或者维修的状况，方便我们分配与您联系上门服务的师傅的工种"
             data-seed="logId"
@@ -175,7 +175,7 @@ class FindDecorator extends Component {
             ref={el => this.customFocusInst = el}
           />
         </List>
-        <List  class="step5">
+        <List className="step5">
           <Picker
             data={this.state.typeList}
             value={this.state.typeChoose}
@@ -185,7 +185,7 @@ class FindDecorator extends Component {
             <List.Item arrow="horizontal">请选择类型</List.Item>
           </Picker>
         </List>
-        <List  class="step6" renderHeader={() => '上传图片'}>
+        <List className="step6" renderHeader={() => '上传图片'}>
           <div className="upload">
             <Upload
               headers={{
@@ -204,7 +204,7 @@ class FindDecorator extends Component {
             </Modal>
           </div>
         </List>
-        <Button class="step7" type="primary" className="findDecorator-form-btn" onClick={this.handleSubmit}>
+        <Button type="primary" className="findDecorator-form-btn step7" onClick={this.handleSubmit}>
           提交
         </Button>
       </div>

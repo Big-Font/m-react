@@ -11,9 +11,8 @@ class ToTop extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      changeLite: false
+      changeLite: false,
     }
-    this.scrollToptimer = null;
   }
 
   componentDidMount() {
@@ -21,14 +20,13 @@ class ToTop extends Component {
   }
 
   scroll = () => {
-    console.log('totop======>',document.documentElement.scrollTop+document.body.scrollTop > 300)
     this.setState({
       changeLite: document.documentElement.scrollTop+document.body.scrollTop > 300
     })
   }
 
   toTop = () => {
-    this.scrollToptimer = setInterval(function () {
+    let scrollToptimer = setInterval(function () {
         // console.log("定时循环回到顶部")
         let top = document.body.scrollTop || document.documentElement.scrollTop;
         let speed = top / 4;
@@ -37,14 +35,10 @@ class ToTop extends Component {
         }else {
             document.documentElement.scrollTop -= speed;
         }
-        if (top == 0) {
-            clearInterval(this.scrollToptimer);
+        if (top <= 0) {
+            clearInterval(scrollToptimer);
         }
     }, 30);
-  }
-
-  componentWillUnmount() {
-    this.scrollToptimer = null;
   }
 
   render() {
